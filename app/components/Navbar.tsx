@@ -13,7 +13,7 @@ export default function Navbar () {
   const [toggle, setToggle] = useState(false);
 
   return (
-    <nav className="w-full flex py-6 justify-between items-center navbar bg-green-200">
+    <nav className="w-full flex py-6 justify-between items-center navbar bg-rose-800">
       <Image src={logo} alt="hoobank" className="w-[124px] h-[32px]" />
 
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
