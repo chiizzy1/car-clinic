@@ -1,12 +1,11 @@
-import './globals.css'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
-
+import { Footer, Navbar } from "./components";
+import "./globals.css";
+import style from "../style";
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -15,11 +14,24 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>
-        <Navbar />
-        {children}
-        <Footer />
+      <body className="bg-primary w-full overflow-hidden">
+        <div className={`${style.paddingX} ${style.flexCenter}`}>
+          <div className={`${style.boxWidth}`}>
+            <Navbar />
+          </div>
+        </div>
+
+        <div className={`bg-primary ${style.flexStart}`}>
+          <div className={`${style.boxWidth}`}>{children}</div>
+        </div>
+
+        <div className={`bg-primary ${style.paddingX} ${style.flexCenter}`}>
+          <div className={`${style.boxWidth}`}>
+            <Footer />
+          </div>
+        </div>
+        
       </body>
     </html>
-  )
+  );
 }
