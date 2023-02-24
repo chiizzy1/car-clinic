@@ -1,51 +1,17 @@
 import styles from "../../../style";
-import { discount, robot } from "../../../assets";
+import { discount, hero_bg, robot } from "../../../assets";
 import Image from "next/image";
 
 const Hero = () => {
   return (
-    <section id="home" className={`flex md:flex-row flex-col ${styles.paddingY} `}>
-      <div className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}>
-        <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] mb-2">
-          <Image src={discount} alt="discount" className="w-[32px] h-[32px]" width={800} height={800} />
-          <p className={`${styles.paragraph} ml-2`}>
-            <span className="text-white">20%</span> Discount For{" "}
-            <span className="text-white">1 Month</span> Account
-          </p>
+    <section id="home" className={`flex md:flex-row flex-col w-full h-screen bg-center  ${styles.paddingY} bg-[url('https://images.pexels.com/photos/4489749/pexels-photo-4489749.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')]`}>
+      <div className={`h-screen w-full`}>
+        {/* <Image src={hero_bg} alt="workshop" className="w-full h-full object-cover absolute "/> */}
+
+        <div className={`${styles.paddingX} ${styles.paragraph}`}>
+          <h1>Car Clinic</h1>
+          <p className=" text-red-500 max-w-[470px]">Welcome to Car Clinic, your one-stop-shop for auto repair and maintenance. Our skilled technicians use state-of-the-art diagnostic tools to quickly identify and fix any issues with your vehicle, while providing you with high-quality service at competitive prices. Trust us to </p>
         </div>
-
-        <div className="flex flex-row justify-between items-center w-full">
-          <h1 className="flex-1 font-poppins font-semibold ss:text-[72px] text-[52px] text-white ss:leading-[100.8px] leading-[75px]">
-            The Next <br className="sm:block hidden" />{" "}
-            <span className="text-gradient">Generation</span>{" "}
-          </h1>
-          <div className="ss:flex hidden md:mr-4 mr-0">
-            <h2>Get Staeted</h2>
-          </div>
-        </div>
-
-        <h1 className="font-poppins font-semibold ss:text-[68px] text-[52px] text-white ss:leading-[100.8px] leading-[75px] w-full">
-          Payment Method.
-        </h1>
-        <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-          Our team of experts uses a methodology to identify the credit cards
-          most likely to fit your needs. We examine annual percentage rates,
-          annual fees.
-        </p>
-      </div>
-
-      <div className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}>
-        <Image src={robot} alt="billing" className="w-[100%] h-[100%] relative z-[5]" width={800} height={800} />
-
-        {/* gradient start */}
-        <div className="absolute z-[0] w-[40%] h-[35%] top-0 pink__gradient" />
-        <div className="absolute z-[1] w-[80%] h-[80%] rounded-full white__gradient bottom-40" />
-        <div className="absolute z-[0] w-[50%] h-[50%] right-20 bottom-20 blue__gradient" />
-        {/* gradient end */}
-      </div>
-
-      <div className={`ss:hidden ${styles.flexCenter}`}>
-        <h2>Get Started</h2>
       </div>
     </section>
   );

@@ -14,16 +14,14 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body className="bg-primary w-full overflow-hidden">
+      <body>
         <div className={`${style.paddingX} ${style.flexCenter}`}>
           <div className={`${style.boxWidth}`}>
             <Navbar />
           </div>
         </div>
 
-        <div className={`bg-primary ${style.flexStart}`}>
-          <div className={`${style.boxWidth}`}>{children}</div>
-        </div>
+        {children}
 
         <div className={`bg-primary ${style.paddingX} ${style.flexCenter}`}>
           <div className={`${style.boxWidth}`}>
