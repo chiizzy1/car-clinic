@@ -1,6 +1,6 @@
 import { Footer, Navbar } from "./components";
 import "./globals.css";
-import style from "../style";
+import styles from "../style";
 
 export default function RootLayout({
   children,
@@ -15,16 +15,16 @@ export default function RootLayout({
       */}
       <head />
       <body>
-        <div className={`${style.paddingX} ${style.flexCenter}`}>
-          <div className={`${style.boxWidth}`}>
+        <div className={`${styles.paddingX} ${styles.flexCenter} `}>
+          <div className={`${styles.boxWidth}`}>
             <Navbar />
           </div>
         </div>
-
+        
         {children}
 
-        <div className={`bg-primary ${style.paddingX} ${style.flexCenter}`}>
-          <div className={`${style.boxWidth}`}>
+        <div className={`bg-primary ${styles.paddingX} ${styles.flexCenter}`}>
+          <div className={`${styles.boxWidth}`}>
             <Footer />
           </div>
         </div>
