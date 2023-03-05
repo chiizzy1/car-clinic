@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "../style";
-import { About, Hero, Services } from "./components";
+import { About, Hero, Services, Testimonial } from "./components";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +21,7 @@ export default function Home() {
       </div>
 
       <Services />
+      <Testimonial />
     </main>
   );
 }
