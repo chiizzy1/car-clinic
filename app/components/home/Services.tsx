@@ -1,8 +1,10 @@
 import React from 'react'
+import styles from '@/style'
+
 
 const Services = () => {
   return (
-    <section className="mx-auto">
+    <section className={`${styles.paddingY}`}> 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="flex justify-center text-6xl border-2 border-gray-300 rounded-xl p-6 bg-gray-100">1</div>
             <div className="flex justify-center text-6xl border-2 border-gray-300 rounded-xl p-6 bg-cyan-100">2</div>
