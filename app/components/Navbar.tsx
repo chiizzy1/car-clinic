@@ -4,7 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import { close, logo, menu } from "../../assets";
 import { navLinks } from "../../constants";
-
+import Login from "../auth/Login";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/pages/api/auth/[...nextauth]"
 
 export default function Navbar () {
 
@@ -12,10 +14,15 @@ export default function Navbar () {
     const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
 
+
+
+  // const session = getServerSession(authOptions)
+  // console.log(session);
+  
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar bg-cyan-900">
       <Image src={logo} alt="hoobank" className="w-[124px] h-[32px]" />
-
+      {/* <Login /> */}
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {navLinks.map((nav, index) => (
           <li
