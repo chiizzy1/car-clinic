@@ -24,7 +24,8 @@ import people01 from "./people01.png";
 import people02 from "./people02.png";
 import people03 from "./people03.png";
 import hero_bg from "./hero_bg.jpg"
-import about_image from "./about_image.jpg"
+import about_image from "./about_image.jpg";
+import toolsIcon from "./toolsIcon.png"
 
 
 export {
@@ -55,4 +56,5 @@ export {
   people03,
   hero_bg,
   about_image,
+  toolsIcon,
 };

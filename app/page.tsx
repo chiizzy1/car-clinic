@@ -17,8 +17,7 @@ export default function Home() {
       <div className={`bg-gray-50 ${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Services />
-          {/* <Services />
-          <Testimonial /> */}
+          <Testimonial />
         </div>
       </div>
 

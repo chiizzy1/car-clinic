@@ -1,4 +1,4 @@
-import { people01, people02, people03, facebook, instagram, linkedin, twitter, airbnb, binance, coinbase, dropbox, send, shield, star  } from "../assets";
+import { people01, people02, people03, facebook, instagram, linkedin, twitter, airbnb, binance, coinbase, dropbox, send, shield, star, toolsIcon  } from "../assets";
 
 export const navLinks = [
   {
@@ -40,6 +40,51 @@ export const features = [
     title: "Balance Transfer",
     content:
       "A balance transfer credit card can save you a lot of money in interest charges.",
+  },
+];
+
+export const servicesContent = [
+  {
+    id: "service-1",
+    content:
+      "Money is only a tool. It will take you wherever you wish, but it will not replace you as the driver.",
+    title: "Car Servicing",
+    icon: toolsIcon,
+  },
+  {
+    id: "service-2",
+    content:
+      "Money is only a tool. It will take you wherever you wish, but it will not replace you as the driver.",
+    title: "Engine examin",
+    icon: toolsIcon,
+  },
+  {
+    id: "service-3",
+    content:
+      "Money is only a tool. It will take you wherever you wish, but it will not replace you as the driver.",
+    title: "Repairs",
+    icon: toolsIcon,
+  },
+  {
+    id: "service-4",
+    content:
+      "Money is only a tool. It will take you wherever you wish, but it will not replace you as the driver.",
+    title: "Routine Check",
+    icon: toolsIcon,
+  },
+  {
+    id: "service-5",
+    content:
+      "Money is only a tool. It will take you wherever you wish, but it will not replace you as the driver.",
+    title: "AC repairs",
+    icon: toolsIcon,
+  },
+  {
+    id: "service-6",
+    content:
+      "Money is only a tool. It will take you wherever you wish, but it will not replace you as the driver.",
+    title: "Painting",
+    icon: toolsIcon,
   },
 ];
 
