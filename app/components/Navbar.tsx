@@ -11,24 +11,19 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]"
 export default function Navbar () {
 
     
-    const [active, setActive] = useState("Home");
+  const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
 
-
-
-  // const session = getServerSession(authOptions)
-  // console.log(session);
-  
   return (
-    <nav className="w-full flex py-6 justify-between items-center navbar bg-cyan-900">
-      <Image src={logo} alt="hoobank" className="w-[124px] h-[32px]" />
-      {/* <Login /> */}
+    <nav className="w-full flex py-6 justify-between items-center navbar ">
+      <div className="text-dimPurple">Car Clinic</div>
+
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {navLinks.map((nav, index) => (
           <li
             key={nav.id}
-            className={`font-poppins font-normal cursor-pointer text-[16px] ${
-              active === nav.title ? "text-white" : "text-dimWhite"
+            className={`font-poppins font-bold cursor-pointer text-[16px] text-sm ${
+              active === nav.title ? "text-purple-800" : "text-purple-400"
             } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
             onClick={() => setActive(nav.title)}
           >
@@ -55,7 +50,7 @@ export default function Navbar () {
               <li
                 key={nav.id}
                 className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                  active === nav.title ? "text-white" : "text-dimWhite"
+                  active === nav.title ? "text-purple-800" : "text-purple-400"
                 } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
                 onClick={() => setActive(nav.title)}
               >

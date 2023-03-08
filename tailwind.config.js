@@ -11,8 +11,17 @@ module.exports = {
       colors: {
         primary: "#00040f",
         secondary: "#00f6ff",
-        dimWhite: "rgba(255, 255, 255, 0.7)",
+        dimWhite: "#f9f9f9",
         dimBlue: "rgba(9, 151, 124, 0.1)",
+        dimPurple: "#40196d",
+        textColor: "#979797",
+        offBlue: "#eff1ff",
+        offGreen: "rgba(72,211,138,0.5)",
+        successColorTans: "#dcffec",
+        bgOffset: "#f4f4f4",
+        lightBlue: "#1dcbef",
+        successColor: "#48d38a",
+        negativeColor: "#f7685b",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

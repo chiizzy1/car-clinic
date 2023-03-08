@@ -18,7 +18,7 @@ export default function Footer() {
             width={800}
             height={800}
           />
-          <p className={`${styles.paragraph} mt-4 max-w-[312px]`}>
+          <p className={`${styles.paragraph} mt-4 max-w-[312px] text-sm`}>
             A new way to make the payments easy, reliable and secure.
           </p>
         </div>
@@ -29,14 +29,14 @@ export default function Footer() {
               key={footerlink.title}
               className={`flex flex-col ss:my-0 my-4 min-w-[150px]`}
             >
-              <h4 className="font-poppins font-medium text-[18px] leading-[27px] text-white">
+              <h4 className="font-poppins font-medium  leading-[27px]  text-purple-800">
                 {footerlink.title}
               </h4>
               <ul className="list-none mt-4">
                 {footerlink.links.map((link, index) => (
                   <li
                     key={link.name}
-                    className={`font-poppins font-normal text-[16px] leading-[24px] text-dimWhite hover:text-secondary cursor-pointer ${
+                    className={`font-poppins font-normal text-sm leading-[24px] text-black hover:text-stone-600 cursor-pointer ${
                       index !== footerlink.links.length - 1 ? "mb-4" : "mb-0"
                     }`}
                   >
@@ -50,7 +50,7 @@ export default function Footer() {
       </div>
 
       <div className="w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3F3E45]">
-        <p className="font-poppins font-normal text-center text-[18px] leading-[27px] text-white">
+        <p className="font-poppins font-normal text-center text-xs leading-[27px] text-stone-600">
           Copyright Ⓒ 2023 Car Clinic. All Rights Reserved.
         </p>
 
