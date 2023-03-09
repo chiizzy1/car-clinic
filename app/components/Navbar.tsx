@@ -16,7 +16,7 @@ export default function Navbar () {
 
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar ">
-      <div className="text-dimPurple">Car Clinic</div>
+      <div className="text-dimPurple font-semibold text-2xl">Car Clinic</div>
 
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {navLinks.map((nav, index) => (
