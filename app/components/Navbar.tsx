@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { close, logo, menu } from "../../assets";
 import { navLinks } from "../../constants";
-import Login from "../auth/Login";
+import Login from "../userAuth/Login";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/pages/api/auth/[...nextauth]"
 

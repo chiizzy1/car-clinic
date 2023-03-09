@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "../style";
-import { Hero, Services, Testimonial } from "./components";
+import { About, Gallery, Hero, Services, Testimonial } from "./components";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,8 +16,10 @@ export default function Home() {
 
       <div className={`bg-gray-50 ${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
+          <About />
           <Services />
           <Testimonial />
+          <Gallery />
         </div>
       </div>
 

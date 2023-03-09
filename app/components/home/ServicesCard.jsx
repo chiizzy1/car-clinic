@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const ServicesCard = ({content, title, icon}) => {
   return (
-    <div className="flex justify-between flex-col px-10 py-12 rounded-[20px]"> 
+    <div className="flex justify-between flex-col px-10 py-12  max-w-[370px] rounded-[20px]"> 
 
       <Image src={icon} alt="icon" width={100} height={100} />
 

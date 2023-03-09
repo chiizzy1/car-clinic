@@ -4,6 +4,7 @@ import Hero from "./home/Hero";
 import Services from "./home/Services";
 import Gallery from "./home/Gallery";
 import Testimonial from "./home/Testimonial";
+import About from "./home/About";
 
 export{
     Navbar,
@@ -12,5 +13,6 @@ export{
     Services,
     Gallery,
     Testimonial,
+    About,
     
 }
