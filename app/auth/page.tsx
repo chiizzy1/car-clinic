@@ -2,7 +2,9 @@ import React from 'react'
 
 const Auth = () => {
   return (
-    <div>Auth page</div>
+    <main>
+      Auth Page
+    </main>
   )
 }
 
