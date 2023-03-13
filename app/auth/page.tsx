@@ -5,7 +5,7 @@ import * as yup from "yup";
 const Auth = () => {
   return (
     <main>
-      Auth Page
+      Auth Page bruh
     </main>
   )
 }
