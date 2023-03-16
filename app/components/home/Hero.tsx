@@ -3,7 +3,7 @@ import styles from "@/style";
 
 const Hero = () => {
   return (
-    <section id="home" className={`flex md:flex-row flex-col w-full h-screen bg-center ${styles.paddingY} bg-no-repeat bg-[url('https://themesfamily.com/tm/wasi/assets/img/slider/1.jpg')]`}>
+    <section id="home" className={`flex md:flex-row flex-col w-full h-[33rem] bg-center ${styles.paddingY} bg-no-repeat bg-[url('https://themesfamily.com/tm/wasi/assets/img/slider/1.jpg')]`}>
 
         <div className={`${styles.paddingX}`}>
           <h1 className={`text-dimPurple  font-poppins font-semibold ss:text-[72px] text-[52px] ss:leading-[100.8px] leading-[75px]`}>Car Clinic</h1>
