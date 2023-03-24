@@ -1,16 +1,14 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import Image from "next/image";
 import { close, logo, menu } from "../../assets";
 import { navLinks } from "../../constants";
-import Login from "../userAuth/Login";
+import Login from "./home/Login"
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/pages/api/auth/[...nextauth]"
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
-export default function Navbar () {
-
-    
+export default function Navbar() {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
 
@@ -30,7 +28,30 @@ export default function Navbar () {
             <a href={`#${nav.id}`}>{nav.title}</a>
           </li>
         ))}
+
+        {/* <div className="avatar">
+          <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <Image
+              src="https://images.pexels.com/photos/10135534/pexels-photo-10135534.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              alt="profile"
+              width={50}
+              height={50}
+            />
+          </div>
+        </div> */}
+        
+        {/* The button to open modal */}
+        <label htmlFor="my-modal-4" className="btn">Login</label>
+
+        {/* Put this part before </body> tag */}
+        <input type="checkbox" id="my-modal-4" className="modal-toggle" />
+        <label htmlFor="my-modal-4" className="modal cursor-pointer">
+          <label className="modal-box relative" htmlFor="">
+            <Login />
+          </label>
+        </label>
       </ul>
+
 
       <div className="sm:hidden flex flex-1 justify-end items-center">
         <Image
@@ -57,6 +78,18 @@ export default function Navbar () {
                 <a href={`#${nav.id}`}>{nav.title}</a>
               </li>
             ))}
+
+            {/* <div className="avatar">
+              <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <Image
+                  src="https://images.pexels.com/photos/10135534/pexels-photo-10135534.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                  alt="profile"
+                  width={50}
+                  height={50}
+                />
+              </div>
+            </div> */}
+            <button className="bg-dimPurple text-white rounded-md py-2 px-6">Login</button>
           </ul>
         </div>
       </div>
