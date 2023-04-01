@@ -4,8 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import { close, logo, menu } from "../../assets";
 import { navLinks } from "../../constants";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 export default function Navbar() {
   const [active, setActive] = useState("Home");
@@ -39,18 +37,9 @@ export default function Navbar() {
           </div>
         </div> */}
         
-        {/* The button to open modal */}
-        <label htmlFor="my-modal-4" className="btn">Login</label>
-
-        {/* Put this part before </body> tag */}
-        <input type="checkbox" id="my-modal-4" className="modal-toggle" />
-        <label htmlFor="my-modal-4" className="modal cursor-pointer">
-          <label className="modal-box relative" htmlFor="">
-            
-          </label>
-        </label>
       </ul>
 
+        {/* Navbar for mobile devices */}
 
       <div className="sm:hidden flex flex-1 justify-end items-center">
         <Image
@@ -88,7 +77,7 @@ export default function Navbar() {
                 />
               </div>
             </div> */}
-            <button className="bg-dimPurple text-white rounded-md py-2 px-6">Login</button>
+            
           </ul>
         </div>
       </div>
