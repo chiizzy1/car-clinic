@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import { close, logo, menu } from "../../assets";
 import { navLinks } from "../../constants";
-import Login from "./home/Login"
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
@@ -47,7 +46,7 @@ export default function Navbar() {
         <input type="checkbox" id="my-modal-4" className="modal-toggle" />
         <label htmlFor="my-modal-4" className="modal cursor-pointer">
           <label className="modal-box relative" htmlFor="">
-            <Login />
+            
           </label>
         </label>
       </ul>
