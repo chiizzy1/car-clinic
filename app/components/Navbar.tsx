@@ -1,86 +1,47 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
 import { close, logo, menu } from "../../assets";
 import { navLinks } from "../../constants";
+import { getServerSession } from "next-auth";
+import Link from "next/link";
+import { buttonVariants } from "./ui/Button";
+import SignInButton from "./ui/SignInButton";
+import SignOutButton from "./ui/SignOutButton";
 
-export default function Navbar() {
-  const [active, setActive] = useState("Home");
-  const [toggle, setToggle] = useState(false);
+export default async function Navbar() {
+  const session = await getServerSession()
 
   return (
-    <nav className="w-full flex py-6 justify-between items-center navbar ">
-      <div className="text-dimPurple font-semibold text-2xl">Car Clinic</div>
+    <div className='fixed backdrop-blur-sm bg-white/75 dark:bg-slate-900/75 z-50 top-0 left-0 right-0 h-20 border-b border-slate-300 dark:border-slate-700 shadow-sm flex items-center justify-between'>
+      <div className='container max-w-7xl mx-auto w-full flex justify-between items-center'>
+        <Link href='/' className={buttonVariants({ variant: 'link' })}>
+          Car Clinic
+        </Link>
 
-      <ul className="list-none sm:flex hidden justify-end items-center flex-1">
-        {navLinks.map((nav, index) => (
-          <li
-            key={nav.id}
-            className={`font-poppins font-bold cursor-pointer text-[16px] text-sm ${
-              active === nav.title ? "text-purple-800" : "text-purple-400"
-            } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
-            onClick={() => setActive(nav.title)}
-          >
-            <a href={`#${nav.id}`}>{nav.title}</a>
-          </li>
-        ))}
-
-        {/* <div className="avatar">
-          <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <Image
-              src="https://images.pexels.com/photos/10135534/pexels-photo-10135534.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-              alt="profile"
-              width={50}
-              height={50}
-            />
-          </div>
+        {/* <div className='md:hidden'>
+          <ThemeToggle />
         </div> */}
-        
-      </ul>
 
-        {/* Navbar for mobile devices */}
-
-      <div className="sm:hidden flex flex-1 justify-end items-center">
-        <Image
-          src={toggle ? close : menu}
-          alt="menu"
-          className="w-[28px] h-[28px] object-contain"
-          onClick={() => setToggle(!toggle)}
-        />
-
-        <div
-          className={`${
-            !toggle ? "hidden" : "flex"
-          } p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
-        >
-          <ul className="list-none flex justify-end items-start flex-1 flex-col">
-            {navLinks.map((nav, index) => (
-              <li
-                key={nav.id}
-                className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                  active === nav.title ? "text-purple-800" : "text-purple-400"
-                } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
-                onClick={() => setActive(nav.title)}
-              >
-                <a href={`#${nav.id}`}>{nav.title}</a>
-              </li>
-            ))}
-
-            {/* <div className="avatar">
-              <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <Image
-                  src="https://images.pexels.com/photos/10135534/pexels-photo-10135534.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                  alt="profile"
-                  width={50}
-                  height={50}
-                />
-              </div>
-            </div> */}
-            
-          </ul>
+        <div className='hidden md:flex gap-4'>
+          {/* <ThemeToggle /> */}
+          <Link
+            href='/documentation'
+            className={buttonVariants({ variant: 'ghost' })}>
+            Documentation
+          </Link>
+          {session ? (
+            <>
+              <Link
+                className={buttonVariants({ variant: 'ghost' })}
+                href='/dashboard'>
+                Dashboard
+              </Link>
+              <SignOutButton />
+            </>
+          ) : (
+            <SignInButton />
+          )}
         </div>
       </div>
-    </nav>
-  );
+    </div>
+  )
 }

@@ -1,6 +1,13 @@
-import { Footer, Navbar } from "./components";
+import { Footer, Navbar, Providers } from "./components";
 import "./globals.css";
 import styles from "../style";
+import { Inter } from "@next/font/google";
+import { cn } from "@/lib/utils";
+import { Toaster } from "./components/ui/toast";
+
+
+const inter = Inter({ subsets: ["latin"] });
+
 
 export default function RootLayout({
   children,
@@ -15,12 +22,13 @@ export default function RootLayout({
       */}
       <head />
 
-      <body className="bg-gray-100 w-full overflow-hidden">
-        <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-          <div className={`${styles.boxWidth}`}>
+      <body className={cn('bg-white min-h-screen antialiased', inter.className)}>
+        <Providers>
+        
+            {/* @ts-expect-error */}
             <Navbar />
-          </div>
-        </div>
+          
+        <Toaster position="bottom-left" />
 
         {children}
 
@@ -29,6 +37,7 @@ export default function RootLayout({
             <Footer />
           </div>
         </div>
+        </Providers>
       </body>
     </html>
   );

@@ -10,6 +10,9 @@ import SideBar from "./dashboard/SideBar";
 import TopCards from "./dashboard/TopCards";
 import BarChart from "./dashboard/BarChart";
 import RecentOrders from "./dashboard/RecentOrders";
+import Providers from "./Providers";
+import { Button, buttonVariants } from "./ui/Button";
+
 
 export{
     Navbar,
@@ -24,5 +27,8 @@ export{
     RecentOrders,
     TopCards,
     BarChart,
+    Providers,
+    Button,
+    buttonVariants,
     
 }

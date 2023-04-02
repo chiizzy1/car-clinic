@@ -1,3 +1,5 @@
+const { fontFamily } = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
@@ -7,6 +9,13 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: '1.5rem',
+      screens: {
+        '2xl': '1360px',
+      },
+    },
     extend: {
       colors: {
         primary: "#00040f",
@@ -24,7 +33,7 @@ module.exports = {
         negativeColor: "#f7685b",
       },
       fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
+        sans: ['var(--font-inter)', ...fontFamily.sans],
       },
       gridTemplateColumns: {
         fluid: "repeat(auto-fit, minmax(15rem, 1fr))",
@@ -39,5 +48,5 @@ module.exports = {
       xl: "1700px",
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), require('tailwindcss-animate'), require('@tailwindcss/typography')],
 }
