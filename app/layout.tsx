@@ -5,9 +5,7 @@ import { Inter } from "@next/font/google";
 import { cn } from "@/lib/utils";
 import { Toaster } from "./components/ui/toast";
 
-
 const inter = Inter({ subsets: ["latin"] });
-
 
 export default function RootLayout({
   children,
@@ -15,28 +13,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-white antialiased">
       {/*
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
 
-      <body className={cn('bg-white min-h-screen antialiased', inter.className)}>
+      <body
+        className={cn("bg-slate-50 antialiased text-black", inter.className)}>
         <Providers>
-        
-            {/* @ts-expect-error */}
-            <Navbar />
-          
-        <Toaster position="bottom-left" />
+          {/* @ts-expect-error */}
+          <Navbar />
 
-        {children}
+          <Toaster position="bottom-left" />
 
-        <div className={`bg-white ${styles.paddingX} ${styles.flexCenter}`}>
-          <div className={`${styles.boxWidth}`}>
-            <Footer />
-          </div>
-        </div>
+          {children}
+
+          {/* <Footer /> */}
         </Providers>
       </body>
     </html>

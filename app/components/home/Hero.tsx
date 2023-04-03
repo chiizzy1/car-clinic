@@ -1,20 +1,29 @@
 import styles from "@/style";
-
+import Image from "next/image";
 
 const Hero = () => {
   return (
-    <section id="home" className={`flex md:flex-row flex-col w-full h-[33rem] bg-center ${styles.paddingY} bg-no-repeat bg-[url('https://themesfamily.com/tm/wasi/assets/img/slider/1.jpg')]`}>
-
-        <div className={`${styles.paddingX}`}>
-          <h1 className={`text-dimPurple  font-poppins font-semibold ss:text-[72px] text-[52px] ss:leading-[100.8px] leading-[75px]`}>Car Clinic</h1>
-          <p className={`max-w-[470px] font-poppins tracking-wide font-medium text-black text-lg leading-[30.8px]`} >Welcome to Car Clinic, your one-stop-shop for auto repair and maintenance. Our skilled technicians use state-of-the-art diagnostic tools to quickly identify and fix any issues with your vehicle, while providing you with high-quality service at competitive prices. Trust
-          us to keep your vehicle running smoothly and safely on the road.</p>
-          <div className={`flex pt-6`}>
-            <button className="bg-dimPurple text-white rounded-md py-2 px-6">Book Appointment</button>
-            <button className="bg-dimPurple text-white rounded-md py-2 px-6 ml-4">Welcome</button>
-          </div>
+    <section>
+      <div className="relative min-h-screen ">
+        
+        <div className=' w-full '>
+            <Image
+              priority
+              className='img-shadow '
+              quality={100}
+              style={{ objectFit: 'cover' }}
+              fill
+              src='https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&w=600'
+              alt='hero_bg'
+            />
         </div>
-
+        <div className={`container absolute max-w-7xl mx-auto mt-12`}>
+          <h1 className="text-3xl font-bold text-lightBlue">Bruh</h1>
+          <h1 className="text-3xl max-w-md font-bold text-lightBlue">
+          Car Clinic is your one-stop shop for reliable and efficient automobile repairs and maintenance. Our team of expert mechanics uses state-of-the-art equipment to diagnose and fix any issues with your vehicle. Trust us to keep your car running smoothly and safely.
+          </h1>
+        </div>
+      </div>
     </section>
   );
 };

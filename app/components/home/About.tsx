@@ -5,15 +5,12 @@ const About = () => (
     <section>
         <div className="sm:flex items-center shadow-md mt-10">
     <div className="w-full">
-      <Image className="bg-cover" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="img" width={400} height={400} />
+      <Image className="bg-cover" src="https://images.pexels.com/photos/1429775/pexels-photo-1429775.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="img" width={400} height={400} />
     </div>
     <div className="md:px-10 sh sm:px-5 w-full">
-      <h1 className="text-gray-800 font-bold text-2xl my-2">long established</h1>
-      <p className="text-gray-700 mb-2 md:mb-6">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that....</p>
-      <div className="flex justify-between mb-2">
-        <span className="font-thin text-sm">May 20th 2020</span>
-        <span className="sm:block hidden mb-2 text-gray-800 font-bold">Read more</span>
-      </div>
+      <p>At our automobile workshop, we provide high-quality repairs and maintenance services to keep your vehicle in top condition. Our team of experienced mechanics has the skills and expertise to handle any repair, from minor issues like oil changes and tire rotations to major engine overhauls.
+
+We understand how important your vehicle is to your daily life, which is why we are committed to providing fast, efficient service that gets you back on the road as quickly as possible. We use only the best parts and equipment to ensure your vehicle runs smoothly and safely.</p>
     </div>
   </div>
     </section>

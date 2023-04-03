@@ -7,22 +7,11 @@ import { About, Gallery, Hero, Services, Testimonial } from "./components";
 
 export default function Home() {
   return (
-    <main  className={` bg-white w-full overflow-hidden`}>
-      <div className={`bg-white ${styles.flexStart}`}>
-        <div className={`${styles.boxWidth}`}>
-          <Hero />
-        </div>
+    <main  className={`relative flex items-center justify-center `}>
+      <div className=" pt-[5rem] max-w-7xl w-full mx-auto">
+        <Hero />
+        <About />
       </div>
-
-      <div className={`bg-white ${styles.paddingX} ${styles.flexCenter}`}>
-        <div className={`${styles.boxWidth}`}>
-          <About />
-          <Services />
-          <Testimonial />
-          <Gallery />
-        </div>
-      </div>
-
     </main>
   );
 }
