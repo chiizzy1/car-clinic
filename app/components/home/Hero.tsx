@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <section>
+    <section className="sm:pb-16 pb-6">
       <div className="relative min-h-screen ">
         
         <div className=' w-full '>
@@ -18,10 +18,9 @@ const Hero = () => {
             />
         </div>
         <div className={`container absolute max-w-7xl mx-auto mt-12`}>
-          <h1 className="text-3xl font-bold text-lightBlue">Bruh</h1>
-          <h1 className="text-3xl max-w-md font-bold text-lightBlue">
-          Car Clinic is your one-stop shop for reliable and efficient automobile repairs and maintenance. Our team of expert mechanics uses state-of-the-art equipment to diagnose and fix any issues with your vehicle. Trust us to keep your car running smoothly and safely.
-          </h1>
+          <h1 className="text-3xl font-bold text-lightBlue">Your one-stop shop{' '}</h1> <br />
+          <p className=" max-w-md text-yellow-400 text-base">Car Clinic is  for reliable and efficient automobile repairs and maintenance. Our team of expert mechanics uses state-of-the-art equipment to diagnose and fix any issues with your vehicle. Trust us to keep your car running smoothly and safely.</p>
+          
         </div>
       </div>
     </section>

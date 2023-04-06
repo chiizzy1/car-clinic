@@ -1,37 +1,84 @@
-import { robot } from "@/assets"
-import styles from "@/style"
-import Image from "next/image"
+import { robot } from "@/assets";
+import styles from "@/style";
+import Image from "next/image";
 
 const Gallery = () => (
-  <section>
-    <h3 className={styles.heading2}>Gallery</h3>
-    <div className="grid gap-4 grid-cols-fluid">
-      <div className="rounded-md overflow-hidden">
-        <Image src="https://youimg1.c-ctrip.com/target/100i1f000001gp42r7B9E_C_480_375.jpg" alt="brj" height={1000} width={1000}/>
-      </div>
-      <div className="rounded-md overflow-hidden">
-        <Image src="https://youimg1.c-ctrip.com/target/100g15000000xpc4u18B2_C_480_375.jpg" alt="brj" height={1000} width={1000}/>
-      </div>
-      <div className="rounded-md overflow-hidden">
-        <Image src="https://youimg1.c-ctrip.com/target/01002120006cf6uyeCC67_C_480_375.jpg" alt="brj" height={1000} width={1000}/>
-      </div>
-      <div className="rounded-md overflow-hidden">
-        <Image src="https://youimg1.c-ctrip.com/target/0100e120006a2hqwa4DAC_C_480_375.jpg" alt="brj" height={1000} width={1000}/>
-      </div>
-      <div className="rounded-md overflow-hidden">
-        <Image src="https://youimg1.c-ctrip.com/target/100i1f000001gp42r7B9E_C_480_375.jpg" alt="brj" height={1000} width={1000}/>
-      </div>
-      <div className="rounded-md overflow-hidden">
-        <Image src="https://youimg1.c-ctrip.com/target/100g15000000xpc4u18B2_C_480_375.jpg" alt="brj" height={1000} width={1000}/>
-      </div>
-      <div className="rounded-md overflow-hidden">
-        <Image src="https://youimg1.c-ctrip.com/target/01002120006cf6uyeCC67_C_480_375.jpg" alt="brj" height={1000} width={1000}/>
-      </div>
-      <div className="rounded-md overflow-hidden">
-        <Image src="https://youimg1.c-ctrip.com/target/0100e120006a2hqwa4DAC_C_480_375.jpg" alt="brj" height={1000} width={1000}/>
+  <section className="sm:py-16 py-6 w-full">
+    <div className="container max-w-7xl mx-auto">
+      <h3 className="pb-4 text-dimPurple text-xl font-bold text-left">
+        Our Gallery
+      </h3>
+      <div className="grid gap-4 grid-cols-fluid">
+        <div className="rounded-md overflow-hidden">
+          <Image
+            src="https://images.pexels.com/photos/3807277/pexels-photo-3807277.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt="mechanic"
+            priority
+            width={1000}
+            height={1000}
+            quality={100}
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+        <div className="rounded-md overflow-hidden">
+          <Image
+            src="https://images.pexels.com/photos/7541976/pexels-photo-7541976.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt="brj"
+            height={1000}
+            width={1000}
+          />
+        </div>
+        <div className="rounded-md overflow-hidden">
+          <Image
+            src="https://images.pexels.com/photos/3807277/pexels-photo-3807277.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt="brj"
+            height={1000}
+            width={1000}
+          />
+        </div>
+        <div className="rounded-md overflow-hidden">
+          <Image
+            src="https://images.pexels.com/photos/159293/car-engine-motor-clean-customized-159293.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt="brj"
+            height={1000}
+            width={1000}
+          />
+        </div>
+        <div className="rounded-md overflow-hidden">
+          <Image
+            src="https://images.pexels.com/photos/7541976/pexels-photo-7541976.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt="brj"
+            height={1000}
+            width={1000}
+          />
+        </div>
+        <div className="rounded-md overflow-hidden">
+          <Image
+            src="https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt="brj"
+            height={1000}
+            width={1000}
+          />
+        </div>
+        <div className="rounded-md overflow-hidden">
+          <Image
+            src="https://images.pexels.com/photos/13065690/pexels-photo-13065690.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt="brj"
+            height={1000}
+            width={1000}
+          />
+        </div>
+        <div className="rounded-md overflow-hidden">
+          <Image
+            src="https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt="brj"
+            height={1000}
+            width={1000}
+          />
+        </div>
       </div>
     </div>
   </section>
-)
+);
 
-export default Gallery
+export default Gallery;

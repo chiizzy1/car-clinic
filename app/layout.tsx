@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="bg-white antialiased">
+    <html lang="en">
       {/*
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
@@ -21,7 +21,7 @@ export default function RootLayout({
       <head />
 
       <body
-        className={cn("bg-slate-50 antialiased text-black", inter.className)}>
+        className={cn("bg-white antialiased text-black", inter.className)}>
         <Providers>
           {/* @ts-expect-error */}
           <Navbar />

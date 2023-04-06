@@ -11,6 +11,7 @@ export default function Home() {
       <div className=" pt-[5rem] max-w-7xl w-full mx-auto">
         <Hero />
         <About />
+        <Gallery />
       </div>
     </main>
   );
