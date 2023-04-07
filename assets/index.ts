@@ -25,8 +25,11 @@ import people02 from "./people02.png";
 import people03 from "./people03.png";
 import hero_bg from "./hero_bg.jpg"
 import about_image from "./about_image.jpg";
-import toolsIcon from "./toolsIcon.png"
-
+import toolsIcon from "./toolsIcon.png";
+import carIcon from "./carIcon.png"
+import diagnosticIcon from "./diagnosticIcon.png";
+import lastIcon from "./lastIcon.png";
+import mechanicIcon from "./mechanicIcon.png"
 
 export {
   airbnb,
@@ -57,4 +60,8 @@ export {
   hero_bg,
   about_image,
   toolsIcon,
+  carIcon,
+  diagnosticIcon,
+  lastIcon,
+  mechanicIcon
 };

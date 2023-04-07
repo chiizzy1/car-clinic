@@ -21,7 +21,7 @@ export default function RootLayout({
       <head />
 
       <body
-        className={cn("bg-white antialiased text-black", inter.className)}>
+        className={cn("bg-slate-100 antialiased text-black", inter.className)}>
         <Providers>
           {/* @ts-expect-error */}
           <Navbar />

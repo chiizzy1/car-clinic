@@ -1,4 +1,7 @@
-import { people01, people02, people03, facebook, instagram, linkedin, twitter, airbnb, binance, coinbase, dropbox, send, shield, star, toolsIcon  } from "../assets";
+import { people01, people02, people03, facebook, instagram, linkedin, twitter, airbnb, binance, coinbase, dropbox, send, shield, star, toolsIcon, carIcon,
+  diagnosticIcon,
+  lastIcon,
+  mechanicIcon  } from "../assets";
 
 export const navLinks = [
   {
@@ -43,48 +46,35 @@ export const features = [
   },
 ];
 
+
 export const servicesContent = [
   {
     id: "service-1",
     content:
-      "Money is only a tool. It will take you wherever you wish, but it will not replace you as the driver.",
-    title: "Car Servicing",
-    icon: toolsIcon,
+      "Identifying issues with a vehicle's systems and providing an estimate of repair costs.",
+    title: "Diagnostic Services",
+    icon: carIcon,
   },
   {
     id: "service-2",
     content:
-      "Money is only a tool. It will take you wherever you wish, but it will not replace you as the driver.",
-    title: "Engine examin",
-    icon: toolsIcon,
+      "Performing routine services like oil changes, tire rotations, and brake inspections to prevent breakdowns.",
+    title: "Regular Maintenance",
+    icon: diagnosticIcon,
   },
   {
     id: "service-3",
     content:
-      "Money is only a tool. It will take you wherever you wish, but it will not replace you as the driver.",
-    title: "Repairs",
-    icon: toolsIcon,
+      "Fixing or replacing damaged or worn-out parts of a vehicle.",
+    title: "Repair Services",
+    icon: mechanicIcon,
   },
   {
     id: "service-4",
     content:
-      "Money is only a tool. It will take you wherever you wish, but it will not replace you as the driver.",
-    title: "Routine Check",
-    icon: toolsIcon,
-  },
-  {
-    id: "service-5",
-    content:
-      "Money is only a tool. It will take you wherever you wish, but it will not replace you as the driver.",
-    title: "AC repairs",
-    icon: toolsIcon,
-  },
-  {
-    id: "service-6",
-    content:
-      "Money is only a tool. It will take you wherever you wish, but it will not replace you as the driver.",
-    title: "Painting",
-    icon: toolsIcon,
+      "Repairing or replacing damaged exterior components of a vehicle.",
+    title: "Bodywork Services",
+    icon: lastIcon,
   },
 ];
 

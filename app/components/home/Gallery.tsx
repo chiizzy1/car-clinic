@@ -1,14 +1,15 @@
 import { robot } from "@/assets";
+import { cn } from "@/lib/utils";
 import styles from "@/style";
 import Image from "next/image";
 
 const Gallery = () => (
   <section className="sm:py-16 py-6 w-full">
     <div className="container max-w-7xl mx-auto">
-      <h3 className="pb-4 text-dimPurple text-xl font-bold text-left">
+      <h3 className={`text-lg text-dimPurple font-bold sm:pb-6 pb-3 w-full text-center`}>
         Our Gallery
       </h3>
-      <div className="grid gap-4 grid-cols-fluid">
+      <div className="grid gap-6 grid-cols-fluid transition-all ease-in-out">
         <div className="rounded-md overflow-hidden">
           <Image
             src="https://images.pexels.com/photos/3807277/pexels-photo-3807277.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
