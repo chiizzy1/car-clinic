@@ -20,7 +20,7 @@ const About = () => (
         </div>
         <div className="w-full flex items-center justify-center">
           <div className="self-start">
-            <h3 className="text-dimPurple text-2xl font-bold text-left sm:pb-6 pb-3 ">
+            <h3 className="text-dimPurple text-2xl font-bold text-left sm:pb-9 pb-6 ">
               About Us
             </h3>
             <p className="max-w-xl text-left font-normal text-sm text-black">

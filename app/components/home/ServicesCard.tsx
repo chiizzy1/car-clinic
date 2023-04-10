@@ -14,10 +14,12 @@ const ServicesCard: FC<ServicesCardProps> = ({content, title, icon}) => {
             <div className="flex flex-col justify-center items-center gap-2 shadow-md hover:shadow-xl rounded-md p-5 bg-white min-h-[12em]">
               <h4 className="text-dimPurple text-lg font-semibold">{title}</h4>
         
-              <p className="max-w-xl text-center font-normal text-sm text-black">
+              <p className="max-w-[17em] text-center font-normal text-sm text-black">
                 {content}
               </p> 
-              <Image src={icon} alt="icon" width={40} height={40} />
+              <div className='hover:rotate-180'>
+                <Image src={icon} alt="icon" width={40} height={40} />
+              </div>
             </div>
           );
 }
