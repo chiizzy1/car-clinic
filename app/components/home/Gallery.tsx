@@ -6,7 +6,7 @@ import Image from "next/image";
 const Gallery = () => (
   <section className="sm:py-16 py-6 w-full">
     <div className="container max-w-7xl mx-auto">
-      <h3 className={`text-lg text-dimPurple font-bold sm:pb-6 pb-3 w-full text-center`}>
+      <h3 className={`text-2xl text-dimPurple font-bold sm:pb-6 pb-3 w-full text-center`}>
         Our Gallery
       </h3>
       <div className="grid gap-6 grid-cols-fluid transition-all ease-in-out">
@@ -37,7 +37,7 @@ const Gallery = () => (
             width={1000}
           />
         </div>
-        <div className="rounded-md overflow-hidden">
+        <div className="rounded-md  overflow-hidden">
           <Image
             src="https://images.pexels.com/photos/159293/car-engine-motor-clean-customized-159293.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             alt="brj"

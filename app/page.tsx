@@ -13,7 +13,7 @@ export default function Home() {
         <About />
         <Services />
         <Gallery />
-        <Testimonial />
+        {/* <Testimonial /> */}
       </div>
     </main>
   );
