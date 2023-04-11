@@ -24,13 +24,16 @@ const Hero = () => {
         </div>
       </div> */}
 
-      <div className="hero min-h-screen" style={{ backgroundImage: `url("https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=600")` }}>
+      <div className="hero min-h-screen" style={{ backgroundImage: `url("https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")` }}>
         <div className="hero-overlay bg-opacity-80"></div>
-        <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Car Clinic</h1>
-            <p className="mb-5">Car Clinic is  for reliable and efficient automobile repairs and maintenance. Our team of expert mechanics uses state-of-the-art equipment to diagnose and fix any issues with your vehicle. Trust us to keep your car running smoothly and safely.</p>
-            <button className="btn btn-primary">Book Appointment</button>
+        <div className="hero-content text-center text-white">
+          <div className="max-w-xl">
+            <h1 className="mb-5 text-5xl font-bold">Welcome to Car Clinic <br /> </h1>
+            <p className="mb-5">where your vehicle gets the care it deserves!</p>
+            <div className="w-full flex items-center justify-center">
+              <button className="btn btn-primary mr-6">Book Appointment</button>
+              <button className="btn btn-primary">Contact Us</button>
+            </div>
           </div>
         </div>
       </div>

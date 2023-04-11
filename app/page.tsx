@@ -8,7 +8,7 @@ import { About, Gallery, Hero, Services, Testimonial } from "./components";
 export default function Home() {
   return (
     <main  className={`relative flex items-center justify-center `}>
-      <div className=" pt-[5rem] max-w-7xl w-full mx-auto">
+      <div className=" pt-[4rem] max-w-7xl w-full mx-auto">
         <Hero />
         <About />
         <Services />

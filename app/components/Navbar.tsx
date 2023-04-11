@@ -11,9 +11,9 @@ export default async function Navbar() {
   const session = await getServerSession()
 
   return (
-    <div className='fixed backdrop-blur-sm bg-white/75 dark:bg-slate-900/75 z-50 top-0 left-0 right-0 h-20 border-b border-slate-300 dark:border-slate-700 shadow-sm flex items-center justify-between'>
+    <div className='fixed backdrop-blur-sm bg-white z-50 top-0 left-0 right-0 h-16 shadow-lg flex items-center justify-between'>
       <div className='container max-w-7xl mx-auto w-full flex justify-between items-center'>
-        <Link href='/' className="text-2xl text-white font-bold">
+        <Link href='/' className="text-2xl text-dimPurple font-bold">
           Car Clinic
         </Link>
 
