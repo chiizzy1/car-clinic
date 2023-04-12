@@ -2,6 +2,10 @@ import { feedback } from "@/constants";
 import styles from "@/style";
 import FeedbackCard from "./FeedbackCard";
 
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+
 const Testimonials = () => (
   <section className="sm:py-16 py-6 w-full">
     <div className="container max-w-7xl mx-auto">
