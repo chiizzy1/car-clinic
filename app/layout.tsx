@@ -23,7 +23,7 @@ export default function RootLayout({
       <body
         className={cn("bg-slate-100 antialiased text-black", inter.className)}>
         <Providers>
-          {/* @ts-expect-error */}
+          {/* @ts-expect-error Server Component */}
           <Navbar />
 
           <Toaster position="bottom-left" />

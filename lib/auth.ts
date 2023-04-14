@@ -2,9 +2,8 @@ import { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google"
 import { db } from "./db";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { Session } from "inspector";
 
-const getGoogleCredentials = () =>{
+const getGoogleCredentials = ():  { clientId: string; clientSecret: string } =>{
     const clientId = process.env.GOOGLE_CLIENT_ID
     const clientSecret = process.env.GOOGLE_CLIENT_SECRET
 
@@ -45,8 +44,30 @@ export const authOptions: NextAuthOptions = {
 
             return session;
         },
+        async jwt({token, user}){
+            const dbUser = await db.user.findFirst({
+                where: {
+                    email: token.email,
+                }
+            });
+    
+            if (!dbUser){
+                token.id = user!.id
+                return token
+            };
+
+            return {
+                id: dbUser.id,
+                name: dbUser.name,
+                email: dbUser.email,
+                picture: dbUser.image
+            }
+        },
+
+        redirect(){
+            return '/dashboard'
+        }
     },
-    // async jwt({token, user}){
-        
-    // }
+
 }
+
