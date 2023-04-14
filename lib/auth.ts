@@ -2,6 +2,7 @@ import { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google"
 import { db } from "./db";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { Session } from "inspector";
 
 const getGoogleCredentials = () =>{
     const clientId = process.env.GOOGLE_CLIENT_ID
@@ -32,5 +33,20 @@ export const authOptions: NextAuthOptions = {
             clientId: getGoogleCredentials().clientId,
             clientSecret: getGoogleCredentials().clientSecret,
         })
-    ]
+    ],
+    callbacks: {
+        session({ token, session }){
+            if (token){
+                session.user.id = token.id
+                session.user.email = token.email
+                session.user.image = token.picture
+                session.user.name = token.name
+            }
+
+            return session;
+        },
+    },
+    // async jwt({token, user}){
+        
+    // }
 }
