@@ -19,6 +19,8 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+
+  customers Customer[]
 }
 
 model Customer {
@@ -31,6 +33,12 @@ model Customer {
   phone Int?
   paid Boolean @default(false)
   published Boolean  @default(false)
+  cars CarDetails[] @relation("CarOwner")
+
+  admin User @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  adminId String
+
+  @@index([adminId])
 }
 
 
@@ -42,6 +50,10 @@ model CarDetails {
   model String
   fixed Boolean @default(false)
   trackId String @default(cuid())
+  owner Customer @relation("CarOwner",fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId String
+
+  @@index([ownerId])
 }
 
 model Account {
