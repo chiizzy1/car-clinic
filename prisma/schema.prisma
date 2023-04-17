@@ -11,13 +11,37 @@ datasource db {
   relationMode = "prisma"
 }
 
-model Post {
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+}
+
+model Customer {
   id        String      @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  title     String   @db.VarChar(255)
-  content   String?
+  firstName     String   
+  lastName String
+  email String
+  phone Int?
+  paid Boolean @default(false)
   published Boolean  @default(false)
+}
+
+
+model CarDetails {
+  id String @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  carMaker String
+  model String
+  fixed Boolean @default(false)
+  trackId String @default(cuid())
 }
 
 model Account {
@@ -37,6 +61,7 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+  @@index([userId])
 }
 
 model Session {
@@ -45,17 +70,9 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId])
 }
 
-model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-}
 
 model VerificationToken {
   identifier String
