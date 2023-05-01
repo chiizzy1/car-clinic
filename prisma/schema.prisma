@@ -32,7 +32,6 @@ model Customer {
   email     String       @unique
   phone     Int?
   paid      Boolean      @default(false)
-  published Boolean      @default(false)
   cars      CarDetails[] @relation("CarOwner")
 
   admin   User   @relation(fields: [adminId], references: [id], onDelete: Cascade)
