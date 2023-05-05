@@ -30,6 +30,11 @@ import carIcon from "./carIcon.png"
 import diagnosticIcon from "./diagnosticIcon.png";
 import lastIcon from "./lastIcon.png";
 import mechanicIcon from "./mechanicIcon.png"
+import one from "./1.png"
+import two from "./2.png"
+import three from "./3.png"
+import four from "./4.png"
+import done from "./done.svg"
 
 export {
   airbnb,
@@ -63,5 +68,10 @@ export {
   carIcon,
   diagnosticIcon,
   lastIcon,
-  mechanicIcon
+  mechanicIcon,
+  one,
+  two,
+  three,
+  four,
+  done,
 };
