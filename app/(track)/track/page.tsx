@@ -1,9 +1,53 @@
+import { Table } from "@/app/components";
 import { done, four, one, three, two } from "@/assets";
 import Image from "next/image";
 import { FC } from "react";
 import { CgLoadbar } from "react-icons/cg";
 
+
+
+const carRepairs = [
+  {
+    id: 1,
+    carId: 1,
+    description: 'Engine tune-up',
+    estimatedCost: 300,
+    status: 'In Progress'
+  },
+  {
+    id: 2,
+    carId: 2,
+    description: 'Brake replacement',
+    estimatedCost: 500,
+    status: 'Completed'
+  },
+  {
+    id: 3,
+    carId: 3,
+    description: 'Suspension repair',
+    estimatedCost: 800,
+    status: 'In Progress'
+  },
+  {
+    id: 4,
+    carId: 4,
+    description: 'Electrical diagnostics',
+    estimatedCost: 200,
+    status: 'Completed'
+  },
+  {
+    id: 5,
+    carId: 5,
+    description: 'Transmission service',
+    estimatedCost: 400,
+    status: 'In Progress'
+  }
+];
+
 const page = () => {
+
+
+
   return (
     <main className="relative flex items-center justify-center">
       <div className="sm:py-16 py-6 w-full">
@@ -12,30 +56,7 @@ const page = () => {
             TRACKING PAGE
           </h3>
 
-          <div className="flex">
-            <table className="w-full">
-              <tr className="flex justify-between">
-                <th>Order ID</th>
-                <th>Customer</th>
-                <th>Address</th>
-                <th>Total</th>
-              </tr>
-              <tr className="flex justify-between">
-                <td>
-                  <span>129837819237</span>
-                </td>
-                <td>
-                  <span>John Doe</span>
-                </td>
-                <td>
-                  <span>Elton st. 212-33 LA</span>
-                </td>
-                <td>
-                  <span>$79.80</span>
-                </td>
-              </tr>
-            </table>
-          </div>
+          <Table repairs={carRepairs}/>
 
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
