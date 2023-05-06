@@ -12,10 +12,11 @@ import BarChart from "./dashboard/BarChart";
 import RecentOrders from "./dashboard/RecentOrders";
 import Providers from "./Providers";
 import { Button, buttonVariants } from "./ui/Button";
-
+import Table from "./Table";
 
 export{
     Navbar,
+    Table,
     Footer,
     Hero,
     Services,
