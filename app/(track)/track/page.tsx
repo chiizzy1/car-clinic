@@ -1,4 +1,4 @@
-import { Table } from "@/app/components";
+import { buttonVariants, Table } from "@/app/components";
 import { done, four, one, three, two } from "@/assets";
 import Image from "next/image";
 import { FC } from "react";
@@ -6,7 +6,7 @@ import { CgLoadbar } from "react-icons/cg";
 
 
 
-const carRepairs = [
+const info = [
   {
     id: 1,
     carId: 1,
@@ -14,34 +14,6 @@ const carRepairs = [
     estimatedCost: 300,
     status: 'In Progress'
   },
-  {
-    id: 2,
-    carId: 2,
-    description: 'Brake replacement',
-    estimatedCost: 500,
-    status: 'Completed'
-  },
-  {
-    id: 3,
-    carId: 3,
-    description: 'Suspension repair',
-    estimatedCost: 800,
-    status: 'In Progress'
-  },
-  {
-    id: 4,
-    carId: 4,
-    description: 'Electrical diagnostics',
-    estimatedCost: 200,
-    status: 'Completed'
-  },
-  {
-    id: 5,
-    carId: 5,
-    description: 'Transmission service',
-    estimatedCost: 400,
-    status: 'In Progress'
-  }
 ];
 
 const page = () => {
@@ -55,10 +27,16 @@ const page = () => {
           <h3 className="text-2xl text-dimPurple font-bold sm:pb-9 pb-6 w-full text-center">
             TRACKING PAGE
           </h3>
+ 
+          <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start items-center sm:py-9 py-6">
+            <input type="text" className="w-fit" placeholder="tracking id..."/>
+            <button className={buttonVariants({ variant: 'ghost' })}>Search</button>
+          </div>
 
-          <Table repairs={carRepairs}/>
 
-          <div className="flex items-center justify-between">
+          <Table info={info}/>
+
+          <div className="flex items-center justify-between sm:py-9 py-6">
             <div className="flex items-center gap-4">
               <div className="flex flex-col">
                 <Image src={done} width={30} height={30} alt="icon" />
@@ -66,7 +44,7 @@ const page = () => {
                   Vehicle Check-In
                 </p>
               </div>
-              <div className="bg-green-500 h-1 w-24" />
+              {/* <div className="bg-green-500 h-1 w-24" /> */}
             </div>
             <div className="flex items-center gap-4">
               <div className="flex flex-col">
@@ -75,7 +53,7 @@ const page = () => {
                   Repair in Progress
                 </p>
               </div>
-              <div className="bg-green-500 h-1 w-24" />
+              {/* <div className="bg-green-500 h-1 w-24" /> */}
             </div>
             <div className="flex items-center gap-4">
               <div className="flex flex-col">
@@ -84,7 +62,7 @@ const page = () => {
                   Vehicle Ready for Pick-up
                 </p>
               </div>
-              <div className="bg-green-500 h-1 w-24" />
+              {/* <div className="bg-green-500 h-1 w-24" /> */}
             </div>
             <div className="flex items-center gap-4">
               <div className="flex flex-col">

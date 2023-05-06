@@ -1,3 +1,5 @@
+"use client"
+
 import { FC } from 'react';
 import { DataGrid, GridColDef, GridColumnHeaderParams } from '@mui/x-data-grid'
 
@@ -35,10 +37,10 @@ const columns = columnsDraft.map((col) => {
 })
 
 interface TableProps {
-  repairs: carRepairs[]
+  info: carInfo[]
 }
 
-export interface carRepairs{
+export interface carInfo{
   id: number,
     carId: number,
     description: string,
@@ -46,19 +48,37 @@ export interface carRepairs{
     status: string
 }
 
-const Table: FC<TableProps> = ({repairs}) => {
+const Table: FC<TableProps> = ({info}) => {
 
-  if(!repairs?.length){
-    return(
-      <div>
-        <h1>No users found</h1>
-      </div>
-    );
-  }
+  const rows = info.map(item => ({
+    id: item.id,
+    col1: item.description,
+    col2: item.carId,
+    col3: item.estimatedCost,
+    col4: item.status,
+    col5: item.description,
+  }))
 
-  return <div>
-    {repairs.map(item => <p key={item.id}>{item.description}</p>)}
-  </div>
+  return (
+    <DataGrid
+        style={{
+          backgroundColor: 'cyan',
+          fontSize: '1rem',
+        }}
+        pageSizeOptions={[5]}
+        disableRowSelectionOnClick
+        autoHeight
+        initialState={{
+          pagination: {
+            paginationModel: {
+              pageSize: 5,
+            },
+          },
+        }}
+        columns={columns}
+        rows={rows}
+      />
+  )
 }
 
 export default Table
