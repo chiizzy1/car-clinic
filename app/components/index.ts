@@ -9,6 +9,7 @@ import Header from "./dashboard/Header";
 import SideBar from "./dashboard/SideBar";
 import TopCards from "./dashboard/TopCards";
 import BarChart from "./dashboard/BarChart";
+import TrackUI from "./Track/trackUi";
 import RecentOrders from "./dashboard/RecentOrders";
 import Providers from "./Providers";
 import { Button, buttonVariants } from "./ui/Button";
@@ -31,5 +32,5 @@ export{
     Providers,
     Button,
     buttonVariants,
-    
+    TrackUI
 }

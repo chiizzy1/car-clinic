@@ -34,7 +34,8 @@ import one from "./1.png"
 import two from "./2.png"
 import three from "./3.png"
 import four from "./4.png"
-import done from "./done.svg"
+import done from "./done.svg";
+import customerCare from "./customer-care.png";
 
 export {
   airbnb,
@@ -74,4 +75,5 @@ export {
   three,
   four,
   done,
+  customerCare
 };

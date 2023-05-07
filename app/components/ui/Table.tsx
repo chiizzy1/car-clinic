@@ -7,18 +7,19 @@ import { DataGrid, GridColDef, GridColumnHeaderParams } from '@mui/x-data-grid'
 const columnsDraft: GridColDef[] = [
   {
     field: 'col1',
-    headerName: 'API key used',
-    width: 400,
+    headerName: 'Customer Name',
+    width: 200,
     renderHeader(params) {
       return (
-        <strong className='font-semibold'>{params.colDef.headerName} 🔑</strong>
+        <strong className='font-semibold'>{params.colDef.headerName} </strong>
       )
     },
   },
-  { field: 'col2', headerName: 'Path', width: 250 },
-  { field: 'col3', headerName: 'Recency', width: 250 },
-  { field: 'col4', headerName: 'Duration', width: 150 },
-  { field: 'col5', headerName: 'Status', width: 150 },
+  { field: 'col2', headerName: 'vehicle info', width: 200 },
+  { field: 'col3', headerName: 'Vehicle Diagnosis', width: 200 },
+  { field: 'col4', headerName: 'Repair Cost', width: 200 },
+  { field: 'col5', headerName: 'Status', width: 200 },
+  { field: 'col6', headerName: 'Vehicle Check-In date', width: 200 },
 ]
 
 const columns = columnsDraft.map((col) => {
@@ -54,16 +55,17 @@ const Table: FC<TableProps> = ({info}) => {
     id: item.id,
     col1: item.description,
     col2: item.carId,
-    col3: item.estimatedCost,
-    col4: item.status,
-    col5: item.description,
+    col3: item.description,
+    col4: `$${item.estimatedCost}`,
+    col5: item.status,
+    col6: item.id,
   }))
 
   return (
     <DataGrid
         style={{
-          backgroundColor: 'cyan',
-          fontSize: '1rem',
+          backgroundColor: 'white',
+          fontSize: '.8rem',
         }}
         pageSizeOptions={[5]}
         disableRowSelectionOnClick
