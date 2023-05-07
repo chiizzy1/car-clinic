@@ -5,7 +5,10 @@ import { Inter } from "@next/font/google";
 import { cn } from "@/lib/utils";
 import { Toaster } from "./components/ui/toast";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 export default function RootLayout({
   children,
@@ -21,7 +24,8 @@ export default function RootLayout({
       <head />
 
       <body
-        className={cn("bg-slate-100 antialiased text-black", inter.className)}>
+        className={cn("bg-slate-100 antialiased text-black", inter.className)}
+      >
         <Providers>
           {/* @ts-expect-error Server Component */}
           <Navbar />

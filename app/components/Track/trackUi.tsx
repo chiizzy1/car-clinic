@@ -1,55 +1,63 @@
-import { FC } from 'react'
+import { FC } from "react";
 import { done, four, one, three, two } from "@/assets";
 import Image from "next/image";
 
-
 interface trackUiProps {
-  status: string
+  status: string;
 }
 
-const trackUi: FC<trackUiProps> = ({status}) => {
-    // Check-In  In-Progress  Ready-for-Pick-up  Delivered
+const trackUi: FC<trackUiProps> = ({ status }) => {
+  // Check-In  In-Progress  Ready-for-Pick-up  Delivered
 
-    let stage: number = status === 'Check-In' ? 1 : status === 'In-Progress' ? 2 : status === 'Ready-for-Pick-up' ? 3 : 4;
+  let stage: number =
+    status === "Check-In"
+      ? 1
+      : status === "In-Progress"
+      ? 2
+      : status === "Ready-for-Pick-up"
+      ? 3
+      : 4;
 
   return (
     <div className="w-full flex items-center justify-between sm:py-9 py-6">
-              <div className="flex items-center gap-4">
-                <div className="flex flex-col">
-                  <Image src={done} width={30} height={30} alt="icon" />
-                  <p className="text-sm text-black font-medium">
-                    Vehicle Check-In
-                  </p>
-                </div>
-                {/* <div className="bg-green-500 h-1 w-24" /> */}
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="flex flex-col">
-                  <Image src={stage >= 2 ? done : two} width={30} height={30} alt="icon" />
-                  <p className="text-sm text-black font-medium">
-                    Repair in Progress
-                  </p>
-                </div>
-                {/* <div className="bg-green-500 h-1 w-24" /> */}
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="flex flex-col">
-                  <Image src={stage >= 3 ? done : three} width={30} height={30} alt="icon" />
-                  <p className="text-sm text-black font-medium">
-                    Vehicle Ready for Pick-up
-                  </p>
-                </div>
-                {/* <div className="bg-green-500 h-1 w-24" /> */}
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="flex flex-col">
-                  <Image src={stage >= 4 ? done : four} width={30} height={30} alt="icon" />
-                  <p className="text-sm text-black font-medium">Delivered</p>
-                </div>
-                {/* <div className="bg-green-500 h-1 w-24" /> */}
-              </div>
-            </div>
-  )
-}
+      <div className="flex flex-col items-center justify-center gap-4">
+        <Image src={done} width={30} height={30} alt="icon" />
+        <p className="text-sm text-black font-medium">Vehicle Check-In</p>
+      </div>
 
-export default trackUi
+      <div className="flex flex-col items-center justify-center gap-4">
+        <Image
+          src={stage >= 2 ? done : two}
+          width={30}
+          height={30}
+          alt="icon"
+        />
+        <p className="text-sm text-black font-medium">Repair in Progress</p>
+      </div>
+
+      <div className="flex flex-col items-center justify-center gap-4">
+        <Image
+          src={stage >= 3 ? done : three}
+          width={30}
+          height={30}
+          alt="icon"
+        />
+        <p className="text-sm text-black font-medium">
+          Vehicle Ready for Pick-up
+        </p>
+      </div>
+
+      <div className="flex flex-col items-center justify-center gap-4">
+        <Image
+          src={stage >= 4 ? done : four}
+          width={30}
+          height={30}
+          alt="icon"
+        />
+        <p className="text-sm text-black font-medium">Delivered</p>
+      </div>
+    </div>
+  );
+};
+
+export default trackUi;

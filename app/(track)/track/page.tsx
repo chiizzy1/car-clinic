@@ -1,4 +1,6 @@
 import { buttonVariants, Table, TrackUI } from "@/app/components";
+import { customerCare } from "@/assets";
+import Image from "next/image";
 
 
 const info = [
@@ -31,8 +33,16 @@ const page = () => {
 
           <Table info={info} />
 
-          <div className="flex gap-4 md:flex-row flex-col">
+          <div className="flex gap-4 sm:flex-row flex-col">
+            <div className="w-full">
             <TrackUI status={info[0].status} />
+            </div>
+
+            <div className="w-full">
+              <Image src={customerCare} alt='customer care' width={250} height={250} />
+              <h4 className="font-semibold ">Not Satisfied?</h4>
+              <p className="text-[.8rem]">Have any Complaints!<br/> Our agents are always online 24/7 to attent to you.</p>
+            </div>
           </div>
         </div>
       </div>
