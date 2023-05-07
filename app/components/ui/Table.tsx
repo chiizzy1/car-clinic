@@ -18,8 +18,9 @@ const columnsDraft: GridColDef[] = [
   { field: 'col2', headerName: 'vehicle info', width: 200 },
   { field: 'col3', headerName: 'Vehicle Diagnosis', width: 200 },
   { field: 'col4', headerName: 'Repair Cost', width: 200 },
-  { field: 'col5', headerName: 'Status', width: 200 },
-  { field: 'col6', headerName: 'Vehicle Check-In date', width: 200 },
+  // { field: 'col5', headerName: 'Status', width: 200 },
+  { field: 'col5', headerName: 'Check-In date', width: 200 },
+  { field: 'col6', headerName: 'Check-Out date', width: 200 },
 ]
 
 const columns = columnsDraft.map((col) => {
@@ -57,7 +58,8 @@ const Table: FC<TableProps> = ({info}) => {
     col2: item.carId,
     col3: item.description,
     col4: `$${item.estimatedCost}`,
-    col5: item.status,
+    // col5: item.status,
+    col5: item.id,
     col6: item.id,
   }))
 
