@@ -6,7 +6,7 @@ interface trackUiProps {
   status: string;
 }
 
-const trackUi: FC<trackUiProps> = ({ status }) => {
+const TrackUi: FC<trackUiProps> = ({ status }) => {
   // Check-In  In-Progress  Ready-for-Pick-up  Delivered
 
   let stage: number =
@@ -60,4 +60,4 @@ const trackUi: FC<trackUiProps> = ({ status }) => {
   );
 };
 
-export default trackUi;
+export default TrackUi;

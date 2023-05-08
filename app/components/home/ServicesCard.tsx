@@ -17,7 +17,7 @@ const ServicesCard: FC<ServicesCardProps> = ({content, title, icon}) => {
               <p className="max-w-[17em] text-center font-normal text-sm text-black">
                 {content}
               </p> 
-              <div className='hover:rotate-180'>
+              <div className='hover:-rotate-[300deg]'>
                 <Image src={icon} alt="icon" width={40} height={40} />
               </div>
             </div>
