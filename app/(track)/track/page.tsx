@@ -33,7 +33,7 @@ const page = () => {
 
           {/* <FAQ /> */}
 
-          <h4 className="text-dimPurple font-bold sm:py-9 py-6 w-full text-center">Car Info</h4>
+          <h4 className="text-dimPurple font-bold sm:py-9 py-6 w-full text-center">Tracking Details</h4>
           <Table info={info} />
 
           <div className="flex gap-8 sm:flex-row flex-col sm:py-9 py-6">
