@@ -66,6 +66,12 @@ model Repair {
   @@index([carId])
 }
 
+model TimeSlot {
+  id           String  @id @default(cuid())
+  time         String
+  availability String
+}
+
 model Account {
   id                String  @id @default(cuid())
   userId            String
