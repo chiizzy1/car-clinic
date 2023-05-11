@@ -66,10 +66,34 @@ model Repair {
   @@index([carId])
 }
 
+// Prisma schema (schema.prisma)
+
 model TimeSlot {
-  id           String  @id @default(cuid())
-  time         String
-  availability String
+  id               String  @id @default(cuid())
+  day              String
+  time             String
+  availability     String
+  clientId         String?
+  reason           String?
+  carType          String?
+  carModel         String?
+  yearManufactured Int?
+  additionalInfo   String?
+
+  // Add a relation to the Client model
+  client appointmentClient? @relation(fields: [clientId], references: [id])
+
+  @@index([clientId])
+}
+
+model appointmentClient {
+  id          String  @id @default(cuid())
+  name        String
+  email       String
+  phoneNumber String?
+
+  // Add a relation to the TimeSlot model
+  timeSlots TimeSlot[]
 }
 
 model Account {
