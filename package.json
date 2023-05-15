@@ -37,13 +37,13 @@
     "react": "18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0",
-    "react-hook-form": "^7.43.5",
+    "react-hook-form": "^7.43.9",
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.7.1",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
     "tailwind-merge": "^1.11.0",
-    "yup": "^1.0.2",
+    "yup": "^1.1.1",
     "zod": "^3.21.4"
   },
   "devDependencies": {

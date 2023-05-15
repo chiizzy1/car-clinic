@@ -15,6 +15,7 @@ import RecentOrders from "./dashboard/RecentOrders";
 import Providers from "./Providers";
 import { Button, buttonVariants } from "./ui/Button";
 import Table from "./ui/Table";
+import BookingForm from "./booking/BookingForm";
 
 export{
     Navbar,
@@ -33,5 +34,6 @@ export{
     Providers,
     Button,
     buttonVariants,
-    TrackUI
+    TrackUI,
+    BookingForm
 }
