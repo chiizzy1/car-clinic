@@ -29,8 +29,15 @@ const BookingForm: FC<BookingFormProps> = ({}) => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(Schema) });
 
+
+  const onSubmit = (data: any) => {
+    alert('clicked!')
+    // console.log(data);
+};
+
+
   return (
-    <form onSubmit={handleSubmit((data) => console.log(data))}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full sm:w-1/2 px-3 mb-6 md:mb-0">
             <label className="">
@@ -74,12 +81,12 @@ const BookingForm: FC<BookingFormProps> = ({}) => {
           <input
             className={`${styles.formInputStyles}`}
             type="text"
-            placeholder="First Name..."
+            placeholder="Phone..."
             {...register("phone")}
           />
           {errors.phone && (
             <p className={`${styles.formErrorStyles}`}>
-              Last name is required.
+              Please enter a valid phone number.
             </p>
           )}
           </label>
@@ -90,12 +97,12 @@ const BookingForm: FC<BookingFormProps> = ({}) => {
           <input
             className={`${styles.formInputStyles}`}
             type="text"
-            placeholder="Last name..."
+            placeholder="Email..."
             {...register("email")}
           />
           {errors.email && (
             <p className={`${styles.formErrorStyles}`}>
-              Last name is required.
+              Please enter a valid email address.
             </p>
           )}
           </label>
@@ -111,12 +118,11 @@ const BookingForm: FC<BookingFormProps> = ({}) => {
           <input
             className={`${styles.formInputStyles}`}
             type="date"
-            placeholder="First Name..."
             {...register("date")}
           />
           {errors.date && (
             <p className={`${styles.formErrorStyles}`}>
-              Last name is required.
+              Please choose a date!
             </p>
           )}
           </label>
@@ -127,12 +133,12 @@ const BookingForm: FC<BookingFormProps> = ({}) => {
           <input
             className={`${styles.formInputStyles}`}
             type="text"
-            placeholder="Last name..."
+            placeholder="select time"
             {...register("time")}
           />
           {errors.time && (
             <p className={`${styles.formErrorStyles}`}>
-              Last name is required.
+              Please select a time!
             </p>
           )}
           </label>
@@ -147,12 +153,12 @@ const BookingForm: FC<BookingFormProps> = ({}) => {
           <input
             className={`${styles.formInputStyles}`}
             type="text"
-            placeholder="First Name..."
+            placeholder="e.g Mercedes Benz..."
             {...register("carMake")}
           />
           {errors.carMake && (
             <p className={`${styles.formErrorStyles}`}>
-              Last name is required.
+              Please enter your car manufacturer name!
             </p>
           )}
           </label>
@@ -163,12 +169,12 @@ const BookingForm: FC<BookingFormProps> = ({}) => {
           <input
             className={`${styles.formInputStyles}`}
             type="text"
-            placeholder="Last name..."
+            placeholder="e.g GLE 63..."
             {...register("carModel")}
           />
           {errors.carModel && (
             <p className={`${styles.formErrorStyles}`}>
-              Last name is required.
+              Please enter your car model
             </p>
           )}
           </label>
@@ -179,12 +185,12 @@ const BookingForm: FC<BookingFormProps> = ({}) => {
           <input
             className={`${styles.formInputStyles}`}
             type="text"
-            placeholder="Last name..."
+            placeholder="e.g 2022..."
             {...register("carYear")}
           />
           {errors.carYear && (
             <p className={`${styles.formErrorStyles}`}>
-              Last name is required.
+              please enter the year your car was manufactured!
             </p>
           )}
           </label>
@@ -196,15 +202,14 @@ const BookingForm: FC<BookingFormProps> = ({}) => {
         <div className="w-full px-3 mb-6 sm:mb-0">
             <label className="">
                 <span>Message or Reason for Appointment</span>
-          <input
+          <textarea
             className={`${styles.formInputStyles}`}
-            type="text"
-            placeholder="Last name..."
+            placeholder="Share any additional information with us."
             {...register("message")}
           />
           {errors.message && (
             <p className={`${styles.formErrorStyles}`}>
-              Last name is required.
+              cannot be blank!
             </p>
           )}
           </label>
@@ -213,8 +218,7 @@ const BookingForm: FC<BookingFormProps> = ({}) => {
       
 
     <div className="flex items-center justify-center w-full">
-
-      <input type="submit" />
+    <button type="submit" className={`bg-green-300 text-white px-6 py-2 rounded-sm`}>Submit</button>
     </div>
     </form>
   );
