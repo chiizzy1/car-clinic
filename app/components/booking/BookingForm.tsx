@@ -32,7 +32,7 @@ const BookingForm: FC<BookingFormProps> = ({}) => {
 
   const onSubmit = (data: any) => {
     alert('clicked!')
-    // console.log(data);
+    console.log(data);
 };
 
 
@@ -201,7 +201,7 @@ const BookingForm: FC<BookingFormProps> = ({}) => {
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full px-3 mb-6 sm:mb-0">
             <label className="">
-                <span>Message or Reason for Appointment</span>
+                <span>Reason for Appointment</span>
           <textarea
             className={`${styles.formInputStyles}`}
             placeholder="Share any additional information with us."

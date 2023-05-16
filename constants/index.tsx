@@ -89,14 +89,14 @@ export const feedback = [
     name: "John Smith",
     title: "Software Engineer",
     content: "I recently brought my car in for service and was extremely impressed with the quality of work and customer service. The staff was friendly and knowledgeable, and my car was fixed in no time. I highly recommend this auto workshop to anyone in need of reliable and professional service.",
-    img: people01
+    img: people02
   },
   {
     id: 2,
     name: "Sarah Johnson",
     title: "Teacher",
     content: "I've been taking my car to this workshop for years and have always been satisfied with their service. The staff is always friendly and takes the time to explain the work that needs to be done. I highly recommend this workshop to anyone in need of car maintenance or repairs.",
-    img: people02
+    img: people01
   },
   {
     id: 3,
@@ -105,13 +105,13 @@ export const feedback = [
     content: "I recently had my brakes replaced at this workshop and was very happy with the quality of work. The staff was very professional and the pricing was very competitive. I would definitely recommend this workshop to anyone in need of car repairs or maintenance.",
     img: people03
   },
-  {
-    id: 4,
-    name: "Jessica Chen",
-    title: "Marketing Manager",
-    content: "I brought my car in for an oil change and was very happy with the service I received. The staff was friendly and knowledgeable, and my car was ready in no time. I would definitely recommend this workshop to anyone in need of car maintenance or repairs.",
-    img: people01
-  }
+  // {
+  //   id: 4,
+  //   name: "Jessica Chen",
+  //   title: "Marketing Manager",
+  //   content: "I brought my car in for an oil change and was very happy with the service I received. The staff was friendly and knowledgeable, and my car was ready in no time. I would definitely recommend this workshop to anyone in need of car maintenance or repairs.",
+  //   img: people01
+  // }
 ];
 
 

@@ -1,4 +1,7 @@
+"use client"
+
 import { BookingForm } from "@/app/components";
+import CalenderForm from "@/app/components/booking/CalenderForm";
 import { FC } from "react";
 
 const page: FC = ({}) => {
@@ -11,7 +14,7 @@ const page: FC = ({}) => {
             Book an Appointment
           </h3>
 
-          <BookingForm />
+          <CalenderForm />
         </div>
       </div>
     </main>
