@@ -1,6 +1,7 @@
 "use client";
 
 import { BookingForm } from "@/app/components";
+import SelectDateTime from "@/app/components/booking/SelectDateTime";
 import { FC } from "react";
 import { BsTelephoneFill } from "react-icons/bs";
 
@@ -18,7 +19,7 @@ const page: FC = ({}) => {
               <h4 className="font-medium text-lg">
                 Select Appointment Date and Time
               </h4>
-              {/* <CalenderForm /> */}
+              <SelectDateTime />
 
               
             </div>
@@ -32,31 +33,76 @@ const page: FC = ({}) => {
               <hr className="my-8" />
 
               <h4 className="font-medium text-lg">Our Location?</h4>
-              <p>plot 4-6, lekki ikate, lagos state, Nigeria</p>
+              <p className="text-sm">plot 4-6, lekki ikate, lagos state, Nigeria</p>
 
               <hr className="my-8" />
 
               <h4 className="font-medium text-lg"> Opening Hours</h4>
-              <div className="flex gap-4">
-                <div className="flex flex-col gap-1">
-                  <span>Sunday</span>
-                  <span>Monday</span>
-                  <span>Tuesday</span>
-                  <span>Wednesday</span>
-                  <span>Thursday</span>
-                  <span>Friday</span>
-                  <span>Saturday</span>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span>Closed</span>
-                  <span>09:00am - 05:00pm</span>
-                  <span>09:00am - 05:00pm</span>
-                  <span>09:00am - 05:00pm</span>
-                  <span>09:00am - 05:00pm</span>
-                  <span>09:00am - 05:00pm</span>
-                  <span>Closed</span>
-                </div>
-              </div>
+
+
+              <table className=''>
+            {/* <tr className=''>
+              <th>Days</th>
+              <th>Opening Time</th>
+            </tr> */}
+            <tr className='text-sm'>
+              <td>
+                <span className=''>Sunday</span>
+              </td>
+              <td>
+                <span className='pl-12'>Closed</span>
+              </td>
+            </tr>
+            <tr className='text-sm'>
+              <td>
+                <span className=''>Monday</span>
+              </td>
+              <td>
+                <span className='pl-12'>09:00am - 05:00pm</span>
+              </td>
+            </tr>
+            <tr className='text-sm'>
+              <td>
+                <span className=''>Tuesday</span>
+              </td>
+              <td>
+                <span className='pl-12'>09:00am - 05:00pm</span>
+              </td>
+            </tr>
+            <tr className='text-sm'>
+              <td>
+                <span className=''>Wednesday</span>
+              </td>
+              <td>
+                <span className='pl-12'>09:00am - 05:00pm</span>
+              </td>
+            </tr>
+            <tr className='text-sm'>
+              <td>
+                <span className=''>Thursday</span>
+              </td>
+              <td>
+                <span className='pl-12'>09:00am - 05:00pm</span>
+              </td>
+            </tr>
+            <tr className='text-sm'>
+              <td>
+                <span className=''>Friday</span>
+              </td>
+              <td>
+                <span className='pl-12'>09:00am - 05:00pm</span>
+              </td>
+            </tr>
+            <tr className='text-sm'>
+              <td>
+                <span className=''>Saturday</span>
+              </td>
+              <td>
+                <span className='pl-12'>09:00am - 05:00pm</span>
+              </td>
+            </tr>
+          </table>
+
             </div>
           </div>
         </div>

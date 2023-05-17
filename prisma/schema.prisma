@@ -70,10 +70,10 @@ model Repair {
 
 model TimeSlot {
   id               String  @id @default(cuid())
-  day              String
+  date              String
   time             String
   availability     String
-  clientId         String?
+  clientId         String
   reason           String?
   carType          String?
   carModel         String?

@@ -37,7 +37,8 @@ module.exports = {
       },
       gridTemplateColumns: {
         fluid: "repeat(auto-fit, minmax(15rem, 1fr))",
-        footer: "repeat(auto-fit, minmax(10rem, 1fr))"
+        footer: "repeat(auto-fit, minmax(10rem, 1fr))",
+        tile: "repeat(auto-fit, minmax(6rem, 1fr))"
       },
     },
     screens: {

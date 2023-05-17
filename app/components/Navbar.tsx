@@ -24,18 +24,18 @@ export default async function Navbar() {
 
         <div className='hidden md:flex gap-4'>
           {/* <ThemeToggle /> */}
-          <Link
+          {/* <Link
             href='/documentation'
             className={buttonVariants({ variant: 'ghost' })}>
             Documentation
-          </Link>
+          </Link> */}
           {session ? (
             <>
-              <Link
+              {/* <Link
                 className={buttonVariants({ variant: 'ghost' })}
                 href='/dashboard'>
                 Dashboard
-              </Link>
+              </Link> */}
               <SignOutButton />
             </>
           ) : (
