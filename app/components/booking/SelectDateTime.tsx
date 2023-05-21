@@ -1,24 +1,27 @@
 "use client";
 
-import { FC, useState } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { add, format } from "date-fns";
+import { DateTime } from "@/utils/types";
 
-interface SelectDateTimeProps {}
+interface SelectDateTimeProps {
+  session: DateTime
+  setSession: Dispatch<SetStateAction<DateTime>>
+}
 
 interface DateType {
   justDate: Date | null;
   dateTime: Date | null;
 }
 
-const SelectDateTime: FC<SelectDateTimeProps> = ({}) => {
-  const [session, setSession] = useState<DateType>({
-    justDate: null,
-    dateTime: null,
-  });
+const SelectDateTime: FC<SelectDateTimeProps> = ({session, setSession}) => {
+  
+
+  const [select, setSelect] = useState(-1)
 
   const getTimes = () => {
     if (!session.justDate) return;
@@ -44,11 +47,12 @@ const SelectDateTime: FC<SelectDateTimeProps> = ({}) => {
 
   return (
     <div>
+      <h4 className="font-medium text-sm mt-8">Please Select a date to see all available sessions</h4>
       <DatePicker
         selected={session.justDate}
         dateFormat="dd-MM-yy"
         minDate={new Date()}
-        className="bg-sky-700 text-white rounded-md w-full h-[5rem] text-center cursor-pointer"
+        className="bg-sky-700 text-white my-8 rounded-md w-full h-[5rem] text-center cursor-pointer"
         placeholderText="select date"
         filterDate={(date) => date.getDay() !== 0 && date.getDay() !== 6}
         onChange={(date: Date) => {
@@ -57,10 +61,10 @@ const SelectDateTime: FC<SelectDateTimeProps> = ({}) => {
         }}
       />
 
-      {times && <h4 className="font-medium text-sm">All available sessions</h4>}
-      <div className="grid grid-cols-tile gap-6 mt-6">
+      {times && <h4 className="font-medium text-sm mt-8">All available sessions</h4>}
+      <div className="grid grid-cols-tile gap-6 my-8">
         {times?.map((time, i) => (
-          <div key={i} className="bg-green-200 rounded-lg py-2 text-center">
+          <div key={i} onClick={()=>setSelect(i)} className={`${select == i ? 'bg-green-400':'bg-zinc-200'}  border rounded-lg py-2 text-center`}>
             <button
               type="button"
               onClick={() =>

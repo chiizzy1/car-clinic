@@ -35,5 +35,6 @@ export{
     Button,
     buttonVariants,
     TrackUI,
-    BookingForm
+    BookingForm,
+    FAQ,
 }

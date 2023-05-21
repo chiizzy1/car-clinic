@@ -50,5 +50,6 @@ module.exports = {
       xl: "1700px",
     },
   },
-  plugins: [require("daisyui"), require('tailwindcss-animate'), require('@tailwindcss/typography')],
+  plugins: [require("daisyui"), require('tailwindcss-animate'), require('@tailwindcss/typography'), require('tailwind-scrollbar'),
+  ],
 }

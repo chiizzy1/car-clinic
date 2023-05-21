@@ -1,10 +1,13 @@
-import "@/app/globals.css"
+import { SideBar } from "@/app/components";
+import "@/app/globals.css";
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // offset navbar height
+
   return (
     <>
       {/*
@@ -12,7 +15,9 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <div className="pt-16">{children}</div>
+      <div className="pt-16">
+        <SideBar>{children}</SideBar>
+      </div>
     </>
   );
 }

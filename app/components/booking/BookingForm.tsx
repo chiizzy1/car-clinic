@@ -1,22 +1,27 @@
 "use client";
 
-import { FC } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styles from "@/style";
 
-interface BookingFormProps {}
+// interface BookingFormProps {
+//   clientData: {}; 
+//   setClientData: Dispatch<SetStateAction<{}>>
+// }
 
-const BookingForm: FC<BookingFormProps> = ({}) => {
+interface BookingFormProps {
+  onSubmit: any
+}
+
+const BookingForm: FC<BookingFormProps> = ({onSubmit}) => {
   // Handle Form with Yup
   const Schema = yup.object().shape({
     firstName: yup.string().required("User Name cannot be empty!"),
     lastName: yup.string().required("User Name cannot be empty!"),
     email: yup.string().email().required("Please enter a valid email address"),
     phone: yup.number().required("Please enter a valid phone number"),
-    date: yup.date().required("Please select a date"),
-    time: yup.array(),
     carMake: yup.string().required("please enter car make"),
     carModel: yup.string().required("What model is your?"),
     carYear: yup.number().required("What year was your car manufactured?"),
@@ -30,14 +35,13 @@ const BookingForm: FC<BookingFormProps> = ({}) => {
   } = useForm({ resolver: yupResolver(Schema) });
 
 
-  const onSubmit = (data: any) => {
-    alert('clicked!')
-    console.log(data);
-};
+  const handleFormSubmit = (data: {}) => {
+    onSubmit(data);
+  };
 
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(handleFormSubmit)}>
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full sm:w-1/2 px-3 mb-6 md:mb-0">
             <label className="">
@@ -49,7 +53,7 @@ const BookingForm: FC<BookingFormProps> = ({}) => {
             {...register("firstName")}
           />
           {errors.firstName && (
-            <p className={`${styles.formErrorStyles}`}>
+            <p className={`text-red-400 text-xs italic`}>
               First name is required.
             </p>
           )}
@@ -80,7 +84,7 @@ const BookingForm: FC<BookingFormProps> = ({}) => {
                 <span>Phone</span>
           <input
             className={`${styles.formInputStyles}`}
-            type="text"
+            type="tel"
             placeholder="Phone..."
             {...register("phone")}
           />
@@ -103,42 +107,6 @@ const BookingForm: FC<BookingFormProps> = ({}) => {
           {errors.email && (
             <p className={`${styles.formErrorStyles}`}>
               Please enter a valid email address.
-            </p>
-          )}
-          </label>
-        </div>
-      </div>
-
-
-
-      <div className="flex flex-wrap -mx-3 mb-6">
-        <div className="w-full sm:w-1/2 px-3 mb-6 md:mb-0">
-            <label className="">
-                <span>Date</span>
-          <input
-            className={`${styles.formInputStyles}`}
-            type="date"
-            {...register("date")}
-          />
-          {errors.date && (
-            <p className={`${styles.formErrorStyles}`}>
-              Please choose a date!
-            </p>
-          )}
-          </label>
-        </div>
-        <div className="w-full sm:w-1/2 px-3 mb-6 sm:mb-0">
-            <label className="">
-                <span>Time</span>
-          <input
-            className={`${styles.formInputStyles}`}
-            type="text"
-            placeholder="select time"
-            {...register("time")}
-          />
-          {errors.time && (
-            <p className={`${styles.formErrorStyles}`}>
-              Please select a time!
             </p>
           )}
           </label>
@@ -173,7 +141,7 @@ const BookingForm: FC<BookingFormProps> = ({}) => {
             {...register("carModel")}
           />
           {errors.carModel && (
-            <p className={`${styles.formErrorStyles}`}>
+            <p className={`text-red-500 ${styles.formErrorStyles}`}>
               Please enter your car model
             </p>
           )}
@@ -203,7 +171,7 @@ const BookingForm: FC<BookingFormProps> = ({}) => {
             <label className="">
                 <span>Reason for Appointment</span>
           <textarea
-            className={`${styles.formInputStyles}`}
+            className={`bg-zinc-100 ${styles.formInputStyles}`}
             placeholder="Share any additional information with us."
             {...register("message")}
           />

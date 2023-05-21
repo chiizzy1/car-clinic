@@ -1,11 +1,16 @@
-import React from "react";
+import { FC } from "react";
 import Link from "next/link";
 import { RxSketchLogo, RxDashboard, RxPerson } from "react-icons/rx";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { FiSettings } from "react-icons/fi";
 import styles from "@/style";
 
-const SideBar = ({ children }) => {
+
+interface SideBarProps {
+  children: React.ReactNode;
+}
+
+const SideBar: FC<SideBarProps> = ({ children }) => {
   return (
     <div className={`${styles.paddingX} ${styles.flexCenter}`}>
       <div className={`${styles.boxWidth}`}>
@@ -45,6 +50,6 @@ const SideBar = ({ children }) => {
       </div>
     </div>
   );
-};
+}
 
 export default SideBar;
