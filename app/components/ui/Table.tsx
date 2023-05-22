@@ -72,6 +72,7 @@ const Table: FC<TableProps> = ({info}) => {
         pageSizeOptions={[5]}
         disableRowSelectionOnClick
         autoHeight
+        checkboxSelection
         initialState={{
           pagination: {
             paginationModel: {

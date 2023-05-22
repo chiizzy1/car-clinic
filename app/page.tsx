@@ -1,20 +1,29 @@
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "../style";
-import { About, Gallery, Hero, Services, Testimonial } from "./components";
-
-
+import {
+  About,
+  Gallery,
+  Hero,
+  Services,
+  Testimonial,
+  Navbar,
+  Footer,
+} from "./components";
 
 export default function Home() {
   return (
-    <main  className={`relative flex items-center justify-center `}>
-      <div className=" pt-[4rem] max-w-7xl w-full mx-auto">
+    <div className={``}>
+      {/* @ts-expect-error Server Component */}
+      <Navbar />
+      <div className=" mt-[4rem] max-w-7xl w-full mx-auto">
         <Hero />
         <About />
         <Services />
         <Testimonial />
         <Gallery />
       </div>
-    </main>
+      <Footer />
+    </div>
   );
 }
