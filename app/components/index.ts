@@ -18,9 +18,9 @@ import Table from "./ui/Table";
 import BookingForm from "./booking/BookingForm";
 import TransactionsTable from "./dashboard/TransactionsTable";
 import CustomersTable from "./dashboard/CustomersTable";
-
-
-
+import CustomerCard from "./dashboard/CustomerCard";
+import StatsCard from "./dashboard/StatsCard";
+import CustomerTransactionHistory from "./dashboard/CustomerTransactionHistory";
 
 export{
     Navbar,
@@ -43,5 +43,9 @@ export{
     BookingForm,
     FAQ,
     TransactionsTable,
-    CustomersTable
+    CustomersTable,
+    CustomerCard,
+    StatsCard,
+    CustomerTransactionHistory,
+    
 }
