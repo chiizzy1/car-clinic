@@ -16,6 +16,11 @@ import Providers from "./Providers";
 import { Button, buttonVariants } from "./ui/Button";
 import Table from "./ui/Table";
 import BookingForm from "./booking/BookingForm";
+import TransactionsTable from "./dashboard/TransactionsTable";
+import CustomersTable from "./dashboard/CustomersTable";
+
+
+
 
 export{
     Navbar,
@@ -37,4 +42,6 @@ export{
     TrackUI,
     BookingForm,
     FAQ,
+    TransactionsTable,
+    CustomersTable
 }

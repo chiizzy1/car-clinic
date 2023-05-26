@@ -15,13 +15,13 @@ const Header: FC<HeaderProps> = ({}) => {
       <div className="p-4 flex">
         <div className="relative flex justify-center items-center">
           <IoMdNotificationsOutline className="text-2xl cursor-pointer ml-4" />
-          <div className="bg-red-600 text-xs flex items-center justify-center  p-[2px] rounded-full absolute top-[-6px] right-[-6px]">
+          <div className="bg-red-600 text-xs text-white flex items-center justify-center  p-[2px] rounded-full absolute top-[-6px] right-[-6px]">
             22
           </div>
         </div>
         <div className="relative flex justify-center items-center">
           <BiMessage className="text-2xl cursor-pointer ml-4" />
-          <div className="bg-red-600 text-xs flex items-center justify-center p-[2px] rounded-full absolute top-[-6px] right-[-6px]">
+          <div className="bg-red-600 text-xs text-white flex items-center justify-center p-[2px] rounded-full absolute top-[-6px] right-[-6px]">
             10
           </div>
         </div>
