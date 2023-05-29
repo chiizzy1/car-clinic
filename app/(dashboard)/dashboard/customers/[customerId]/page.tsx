@@ -4,7 +4,6 @@ import {
   Header,
   StatsCard,
 } from "@/app/components";
-import { FC } from "react";
 
 
 
