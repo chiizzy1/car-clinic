@@ -1,6 +1,7 @@
 import {
   CustomerCard,
   CustomerTransactionHistory,
+  Header,
   StatsCard,
 } from "@/app/components";
 import { FC } from "react";
@@ -16,6 +17,7 @@ const Customer = async ({ params }: any) => {
   
   return (
     <div className="p-4">
+      <Header />
       <div className=" grid md:grid-cols-3 grid-cols-1 gap-4">
         <CustomerCard />
         <StatsCard />

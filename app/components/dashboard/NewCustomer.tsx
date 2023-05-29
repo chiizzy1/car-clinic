@@ -1,19 +1,17 @@
 "use client";
 
-import { Dispatch, FC, SetStateAction } from "react";
-import { useForm } from "react-hook-form";
+import { FC } from "react";
+import Axios from "axios";
+import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import Select from "react-select";
+import { useMutation } from "@tanstack/react-query";
 import styles from "@/style";
 
-// interface BookingFormProps {
-//   clientData: {};
-//   setClientData: Dispatch<SetStateAction<{}>>
-// }
+interface NewCustomerProps {}
 
-interface BookingFormProps {}
-
-const BookingForm: FC<BookingFormProps> = () => {
+const NewCustomer: FC<NewCustomerProps> = ({}) => {
   // Handle Form with Yup
   const Schema = yup.object().shape({
     firstName: yup.string().required("User Name cannot be empty!"),
@@ -23,14 +21,21 @@ const BookingForm: FC<BookingFormProps> = () => {
     carMake: yup.string().required("please enter car make"),
     carModel: yup.string().required("What model is your?"),
     carYear: yup.number().required("What year was your car manufactured?"),
-    message: yup.string(),
+    cost: yup.number().required("repair cost"),
+    diagnosis: yup.string().required('cannot be empty')
   });
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    control,
   } = useForm({ resolver: yupResolver(Schema) });
+
+  const selectOptions = [
+    { value: true, label: "Yes" },
+    { value: false, label: "No" },
+  ];
 
   const handleFormSubmit = (data: {}) => {
     console.log(data);
@@ -101,6 +106,33 @@ const BookingForm: FC<BookingFormProps> = () => {
       </div>
 
       <div className="flex flex-wrap -mx-3 mb-6">
+        <div className="w-full sm:w-1/2 px-3 mb-6 md:mb-0">
+          <p className="pb-2">Repair Cost ($)</p>
+          <input
+            className={`${styles.formInputStyles}`}
+            type="number"
+            placeholder="100.00"
+            {...register("cost")}
+          />
+          {errors.cost && (
+            <p className={`${styles.formErrorStyles}`}>cost is required.</p>
+          )}
+        </div>
+        <div className="w-full sm:w-1/2 px-3 mb-6 sm:mb-0">
+          <p className="pb-2">Paid</p>
+
+          <Controller
+            name="paid"
+            control={control}
+            defaultValue={{ value: false, label: "No" }}
+            render={({ field }) => (
+              <Select options={selectOptions} {...field} className={styles.formInputStyles}/>
+            )}
+          />
+        </div>
+      </div>
+
+      <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full sm:w-1/3 px-3 mb-6 md:mb-0">
           <p className="pb-2">Vehicle Make</p>
           <input
@@ -133,10 +165,11 @@ const BookingForm: FC<BookingFormProps> = () => {
           <p className="pb-2">Year</p>
           <input
             className={`${styles.formInputStyles}`}
-            type="text"
+            type="number"
             placeholder="e.g 2022..."
             {...register("carYear")}
           />
+
           {errors.carYear && (
             <p className={`${styles.formErrorStyles}`}>
               please enter the year your car was manufactured!
@@ -147,14 +180,14 @@ const BookingForm: FC<BookingFormProps> = () => {
 
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full px-3 mb-6 sm:mb-0">
-          <p className="pb-2">Reason for Appointment</p>
+          <p className="pb-2">Diagnosis</p>
           <textarea
             className={`bg-zinc-100 ${styles.formInputStyles}`}
-            placeholder="Share any additional information with us."
-            {...register("message")}
+            placeholder="Car diagnosis info."
+            {...register("diagnosis")}
           />
-          {errors.message && (
-            <p className={`${styles.formErrorStyles}`}>cannot be blank!</p>
+          {errors.diagnosis && (
+            <p className={`${styles.formErrorStyles}`}>this field cannot be blank!</p>
           )}
         </div>
       </div>
@@ -171,4 +204,4 @@ const BookingForm: FC<BookingFormProps> = () => {
   );
 };
 
-export default BookingForm;
+export default NewCustomer;

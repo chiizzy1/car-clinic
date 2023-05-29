@@ -21,6 +21,7 @@ import CustomersTable from "./dashboard/CustomersTable";
 import CustomerCard from "./dashboard/CustomerCard";
 import StatsCard from "./dashboard/StatsCard";
 import CustomerTransactionHistory from "./dashboard/CustomerTransactionHistory";
+import NewCustomer from "./dashboard/NewCustomer";
 
 export{
     Navbar,
@@ -47,5 +48,6 @@ export{
     CustomerCard,
     StatsCard,
     CustomerTransactionHistory,
+    NewCustomer,
     
 }

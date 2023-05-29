@@ -46,7 +46,6 @@ model CarDetails {
   make      String
   model     String
   year      Int
-  trackId   String   @default(cuid())
   owner     Customer @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   ownerId   String
   repair    Repair[]
@@ -58,6 +57,7 @@ model Repair {
   id            String     @id @default(cuid())
   description   String
   estimatedCost Float
+  trackId       String     @default(cuid())
   paid          Boolean    @default(false)
   fixed         Boolean    @default(false)
   car           CarDetails @relation(fields: [carId], references: [id], onDelete: Cascade)
@@ -70,7 +70,7 @@ model Repair {
 
 model TimeSlot {
   id               String  @id @default(cuid())
-  date              String
+  date             String
   time             String
   availability     String
   clientId         String
