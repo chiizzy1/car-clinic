@@ -10,6 +10,7 @@ const page: FC<pageProps> = ({}) => {
       <div className="container max-w-7xl mx-auto">
         <Header />
         <div className="scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-gray-100">
+         <h3 className="font-medium text-xl">Latest repairs</h3>
           <CustomersTable />
         </div>
       </div>
