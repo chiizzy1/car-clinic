@@ -44,9 +44,8 @@ const SideBar: FC<SideBarProps> = ({ children }) => {
           </Link>
 
           <div className="bg-gray-100 hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
-            <FiLogOut size={20}>
+           
               <SignOutButton />
-            </FiLogOut>
           </div>
         </div>
       </div>

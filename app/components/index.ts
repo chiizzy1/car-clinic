@@ -22,6 +22,8 @@ import CustomerCard from "./dashboard/CustomerCard";
 import StatsCard from "./dashboard/StatsCard";
 import CustomerTransactionHistory from "./dashboard/CustomerTransactionHistory";
 import NewCustomer from "./dashboard/NewCustomer";
+import ReactQueryWrapper from "./ui/ReactQueryWrapper";
+import AdminAuthForm from "./adminAuth/AdminAuthForm";
 
 export{
     Navbar,
@@ -49,5 +51,7 @@ export{
     StatsCard,
     CustomerTransactionHistory,
     NewCustomer,
+    ReactQueryWrapper,
+    AdminAuthForm,
     
 }

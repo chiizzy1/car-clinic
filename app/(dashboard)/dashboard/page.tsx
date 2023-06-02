@@ -8,11 +8,10 @@ import {
 } from "@/app/components";
 
 
-interface pageProps {}
 
 
 
-const page: FC<pageProps> = ({}) => {
+const page = () => {
   return (
     <main className="bg-gray-100 min-h-screen">
       <div className="container max-w-7xl mx-auto">

@@ -11,12 +11,18 @@ datasource db {
   relationMode = "prisma"
 }
 
+enum UserRole {
+  AUTHORIZED
+  UNAUTHORIZED
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String?
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  role          UserRole  @default(UNAUTHORIZED)
   accounts      Account[]
   sessions      Session[]
 
