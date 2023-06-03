@@ -1,8 +1,26 @@
-import { AdminAuthForm, buttonVariants } from "@/app/components";
+import { AdminAuthForm, buttonVariants, Unauthorized } from "@/app/components";
+import { authOptions } from "@/lib/auth";
+import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { RiHome2Line } from "react-icons/ri";
+import { notFound } from 'next/navigation'
+import { redirect } from 'next/navigation';
 
-const LoginPage = () => {
+
+const LoginPage = async () => {
+
+  const user = await getServerSession (authOptions)
+
+  if (user && user.user.role === "AUTHORIZED") {
+    redirect("/dashboard")
+  }
+
+  if (user && user.user.role !== "AUTHORIZED") {
+    return <Unauthorized />;
+  }
+
+
+
   return (
     <>
       <div className='absolute inset-0 mx-auto container flex h-screen flex-col items-center justify-center'>

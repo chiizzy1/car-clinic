@@ -3,13 +3,15 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import { BiMessage } from "react-icons/bi";
 import { RiHome2Line } from "react-icons/ri";
 
-interface HeaderProps {}
+interface HeaderProps {
+  name: string
+}
 
-const Header: FC<HeaderProps> = ({}) => {
+const Header: FC<HeaderProps> = ({name}) => {
   return (
     <div className="flex justify-between pt-4">
       <div className="p-4">
-        <h2 className="font-medium">Welcome Back, Chukwu</h2>
+        <h2 className="font-medium">Welcome Back, {name}</h2>
       </div>
 
       <div className="p-4 flex">

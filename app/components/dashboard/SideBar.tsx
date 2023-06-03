@@ -4,7 +4,6 @@ import { RxSketchLogo, RxDashboard, RxPerson } from "react-icons/rx";
 import { GiAutoRepair } from "react-icons/gi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { FiSettings, FiLogOut } from "react-icons/fi";
-import styles from "@/style";
 import SignOutButton from "../ui/SignOutButton";
 
 interface SideBarProps {
@@ -16,7 +15,7 @@ const SideBar: FC<SideBarProps> = ({ children }) => {
     <div className="flex">
       <div className="fixed w-20 h-screen p-4 bg-white border-r-[1px] flex flex-col justify-between">
         <div className="flex flex-col items-center">
-          <Link href="/dashboard">
+          <Link href="/">
             <div className="bg-purple-800 text-white p-3 rounded-lg inline-block">
               <RxSketchLogo size={20} />
             </div>
@@ -43,9 +42,8 @@ const SideBar: FC<SideBarProps> = ({ children }) => {
             </div>
           </Link>
 
-          <div className="bg-gray-100 hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
-           
-              <SignOutButton />
+          <div >
+            <SignOutButton page="dashboard" />
           </div>
         </div>
       </div>

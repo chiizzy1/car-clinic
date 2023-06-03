@@ -24,6 +24,9 @@ import CustomerTransactionHistory from "./dashboard/CustomerTransactionHistory";
 import NewCustomer from "./dashboard/NewCustomer";
 import ReactQueryWrapper from "./ui/ReactQueryWrapper";
 import AdminAuthForm from "./adminAuth/AdminAuthForm";
+import Unauthorized from "./dashboard/Unauthorized";
+
+
 
 export{
     Navbar,
@@ -53,5 +56,6 @@ export{
     NewCustomer,
     ReactQueryWrapper,
     AdminAuthForm,
+    Unauthorized,
     
 }
