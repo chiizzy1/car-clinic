@@ -16,7 +16,7 @@ const Customer = async ({ params }: any) => {
   
   return (
     <div className="p-4">
-      <Header />
+      <Header name='izzy' />
       <div className=" grid md:grid-cols-3 grid-cols-1 gap-4">
         <CustomerCard />
         <StatsCard />

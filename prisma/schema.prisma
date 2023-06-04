@@ -68,6 +68,8 @@ model Repair {
   fixed         Boolean    @default(false)
   car           CarDetails @relation(fields: [carId], references: [id], onDelete: Cascade)
   carId         String
+  startDate     DateTime   @default(now())
+  finishDate    DateTime   @default(now())
 
   @@index([carId])
 }

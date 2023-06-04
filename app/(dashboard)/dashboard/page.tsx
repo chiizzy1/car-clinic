@@ -14,14 +14,15 @@ import { redirect } from 'next/navigation';
 
 const page = async () => {
   const user = await getServerSession(authOptions);
+  if (!user) return notFound()
+console.log(user)
+  // if (!user) {
+  //   redirect("/login")
+  // };
 
-  if (!user) {
-    redirect("/login")
-  };
-
-  if (user && user.user.role !== "AUTHORIZED") {
-    redirect("/");
-  }
+  // if (user && user.user.role !== "AUTHORIZED") {
+  //   redirect("/");
+  // }
 
   return (
     <main className="bg-gray-100 min-h-screen">
