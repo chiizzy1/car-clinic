@@ -2,11 +2,16 @@ import { Customer } from "@prisma/client";
 import { ZodIssue } from "zod";
 
 export interface CreateNewCustomerData {
-    error: string | ZodIssue[] | null
-    customerData: Customer | null
+  error: string | ZodIssue[] | null;
+  customerData: Customer | null;
 }
 
 export interface DeleteCustomerData {
-    error: string | ZodIssue[] | null
-    success: boolean
-  }
+  error: string | ZodIssue[] | null;
+  success: boolean;
+}
+
+export interface UpdateCustomerData {
+  error: string | ZodIssue[] | null;
+  UpdatedCustomerData:  Customer | boolean;
+}
