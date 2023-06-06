@@ -32,15 +32,16 @@ model User {
 model Customer {
   id        String       @id @default(cuid())
   createdAt DateTime     @default(now())
-  updatedAt DateTime     @updatedAt
-  firstName String
-  lastName  String
-  email     String       @unique
-  phone     Int
+  updatedAt DateTime?     @updatedAt
+  firstName String?
+  lastName  String?
+  email     String?       @unique
+  phone     Int?
   cars      CarDetails[]
 
-  admin   User   @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  admin   User     @relation(fields: [adminId], references: [id])
   adminId String
+  repairs  Repair[]
 
   @@index([adminId])
 }
@@ -68,10 +69,12 @@ model Repair {
   fixed         Boolean    @default(false)
   car           CarDetails @relation(fields: [carId], references: [id], onDelete: Cascade)
   carId         String
+  owner         Customer   @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  customerId    String
   startDate     DateTime   @default(now())
-  finishDate    DateTime   @default(now())
+  finishDate    DateTime?   
 
-  @@index([carId])
+  @@index([carId, customerId])
 }
 
 // Prisma schema (schema.prisma)

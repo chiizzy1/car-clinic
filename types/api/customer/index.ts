@@ -3,5 +3,10 @@ import { ZodIssue } from "zod";
 
 export interface CreateNewCustomerData {
     error: string | ZodIssue[] | null
-    newCustomerData: Customer
+    customerData: Customer | null
 }
+
+export interface DeleteCustomerData {
+    error: string | ZodIssue[] | null
+    success: boolean
+  }

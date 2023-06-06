@@ -15,7 +15,7 @@ import { redirect } from 'next/navigation';
 const page = async () => {
   const user = await getServerSession(authOptions);
   if (!user) return notFound()
-console.log(user)
+console.log(user.user)
   // if (!user) {
   //   redirect("/login")
   // };
