@@ -5,7 +5,7 @@ interface pageProps {
 }
 
 const page: FC<pageProps> = ({}) => {
-    return <div>Edit repairs page
+    return <div>all cars belonging to a customer
 
     {/* Add ability for admin to add/delete cars */}
 

@@ -6,22 +6,10 @@ export interface CreateNewRepairData {
   RepairData: Repair | null;
 }
 
-export type allRepairData = {
-  id: string;
-  description: string;
-  estimatedCost: number;
-  trackId: string;
-  paid: boolean;
-  fixed: boolean;
-  car: CarDetails;
-  carId: string;
-  owner: Customer;
-  finishDate: Date | null;
-}[]
 
 export interface GetAllRepairsData {
   error: string | ZodIssue[] | null;
-  RepairData: allRepairData | null;
+  RepairData: Repair | null;
 }
 
 export interface DeleteRepairData {
