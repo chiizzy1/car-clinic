@@ -11,6 +11,7 @@ export type allCarData = {
   make: string;
   model: string;
   year: number;
+  plateNumber: string;
   owner: Customer;
   ownerId: string;
   repair: Repair[];
@@ -18,9 +19,8 @@ export type allCarData = {
 
 export interface GetAllCarsData {
   error: string | ZodIssue[] | null;
-  CarData: allCarData | null;
+  CarData: allCarData[] | null;
 }
-[];
 
 export interface DeleteCarData {
   error: string | ZodIssue[] | null;

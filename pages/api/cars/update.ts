@@ -8,15 +8,13 @@ import { z } from "zod";
 import { CreateNewCarData } from "@/types/api/cars";
 import { CarDetails } from "@prisma/client";
 
-
-const handler = async  (
+const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<CreateNewCarData>
 ) => {
-
-  const {  make, model, year, plateNumber }: CarDetails = req.body;
+  const data: CarDetails = req.body;
   const query = req.query;
-  const { ownerId } = query;
+  const { carId } = query;
 
   try {
     const user = await getServerSession(req, res, authOptions).then(
@@ -30,40 +28,37 @@ const handler = async  (
       });
     }
 
-    const existingCar = await db.carDetails.findFirst({
-      where: { plateNumber: plateNumber }
-    })
+    const getCar = await db.carDetails.findFirst({
+      where: { id: carId as string },
+    });
 
-    
-    if (existingCar) {
+    if (!getCar) {
       return res.status(400).json({
-        error: "Car details already exists!",
+        error: "Car details does not exist!",
         CarData: null,
       });
     }
 
-    const carData = await db.carDetails.create({
-      data: {
-        make: make,
-        model: model,
-        year: year,
-        plateNumber: plateNumber,
-        ownerId: ownerId as string
-      },
+    const updateCarData = await db.carDetails.update({
+      where: { id: carId as string },
+      data: data,
     });
 
     return res.status(200).json({
       error: null,
-      CarData: carData,
+      CarData: updateCarData,
     });
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return res.status(400).json({ error: error.issues, CarData: null });
+      return res
+        .status(400)
+        .json({ error: error.issues, CarData: null });
     }
 
     return res
+      .status(500)
       .json({ error: "Internal Server Error", CarData: null });
   }
 };
 
-export default withMethods(["POST"], handler);
+export default withMethods(["PUT"], handler);
