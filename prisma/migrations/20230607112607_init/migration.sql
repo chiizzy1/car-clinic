@@ -5,6 +5,7 @@ CREATE TABLE `User` (
     `email` VARCHAR(191) NULL,
     `emailVerified` DATETIME(3) NULL,
     `image` VARCHAR(191) NULL,
+    `role` ENUM('AUTHORIZED', 'UNAUTHORIZED') NOT NULL DEFAULT 'UNAUTHORIZED',
 
     UNIQUE INDEX `User_email_key`(`email`),
     PRIMARY KEY (`id`)
@@ -14,13 +15,11 @@ CREATE TABLE `User` (
 CREATE TABLE `Customer` (
     `id` VARCHAR(191) NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-    `updatedAt` DATETIME(3) NOT NULL,
-    `firstName` VARCHAR(191) NOT NULL,
-    `lastName` VARCHAR(191) NOT NULL,
-    `email` VARCHAR(191) NOT NULL,
+    `updatedAt` DATETIME(3) NULL,
+    `firstName` VARCHAR(191) NULL,
+    `lastName` VARCHAR(191) NULL,
+    `email` VARCHAR(191) NULL,
     `phone` INTEGER NULL,
-    `paid` BOOLEAN NOT NULL DEFAULT false,
-    `published` BOOLEAN NOT NULL DEFAULT false,
     `adminId` VARCHAR(191) NOT NULL,
 
     UNIQUE INDEX `Customer_email_key`(`email`),
@@ -33,13 +32,57 @@ CREATE TABLE `CarDetails` (
     `id` VARCHAR(191) NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
-    `carMaker` VARCHAR(191) NOT NULL,
+    `make` VARCHAR(191) NOT NULL,
     `model` VARCHAR(191) NOT NULL,
-    `fixed` BOOLEAN NOT NULL DEFAULT false,
-    `trackId` VARCHAR(191) NOT NULL,
+    `year` INTEGER NOT NULL,
+    `plateNumber` VARCHAR(191) NOT NULL,
     `ownerId` VARCHAR(191) NOT NULL,
 
     INDEX `CarDetails_ownerId_idx`(`ownerId`),
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Repair` (
+    `id` VARCHAR(191) NOT NULL,
+    `description` VARCHAR(191) NOT NULL,
+    `estimatedCost` DOUBLE NOT NULL,
+    `trackId` VARCHAR(191) NOT NULL,
+    `paid` BOOLEAN NOT NULL DEFAULT false,
+    `fixed` BOOLEAN NOT NULL DEFAULT false,
+    `carId` VARCHAR(191) NOT NULL,
+    `customerId` VARCHAR(191) NOT NULL,
+    `startDate` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `finishDate` DATETIME(3) NULL,
+
+    INDEX `Repair_carId_customerId_idx`(`carId`, `customerId`),
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `TimeSlot` (
+    `id` VARCHAR(191) NOT NULL,
+    `date` VARCHAR(191) NOT NULL,
+    `time` VARCHAR(191) NOT NULL,
+    `availability` VARCHAR(191) NOT NULL,
+    `clientId` VARCHAR(191) NOT NULL,
+    `reason` VARCHAR(191) NULL,
+    `carType` VARCHAR(191) NULL,
+    `carModel` VARCHAR(191) NULL,
+    `yearManufactured` INTEGER NULL,
+    `additionalInfo` VARCHAR(191) NULL,
+
+    INDEX `TimeSlot_clientId_idx`(`clientId`),
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `appointmentClient` (
+    `id` VARCHAR(191) NOT NULL,
+    `name` VARCHAR(191) NOT NULL,
+    `email` VARCHAR(191) NOT NULL,
+    `phoneNumber` VARCHAR(191) NULL,
+
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 

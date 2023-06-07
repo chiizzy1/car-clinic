@@ -53,7 +53,7 @@ model CarDetails {
   make        String
   model       String
   year        Int
-  plateNumber String?
+  plateNumber String
   owner       Customer @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   ownerId     String
   repair      Repair[]
