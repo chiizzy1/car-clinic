@@ -6,20 +6,15 @@ export interface CreateNewCarData {
   CarData: CarDetails | null;
 }
 
-export type allCarData = {
-  id: string;
-  make: string;
-  model: string;
-  year: number;
-  plateNumber: string;
-  owner: Customer;
-  ownerId: string;
-  repair: Repair[];
-}[];
+
+export interface GetCarData {
+  error: string | ZodIssue[] | null;
+  CarData:  (CarDetails & { owner: Customer; repair: Repair[] }) | null;
+}
 
 export interface GetAllCarsData {
   error: string | ZodIssue[] | null;
-  CarData: allCarData[] | null;
+  CarData: (CarDetails & { owner: Customer; repair: Repair[]; })[] | null;
 }
 
 export interface DeleteCarData {

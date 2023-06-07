@@ -6,15 +6,7 @@ export interface CreateNewCustomerData {
   customerData: Customer | null;
 }
 
-export type allCustomerData = {
-  email: string;
-  firstName: string;
-  lastName: string;
-  phone: number;
-  id: string;
-  cars: CarDetails[];
-  repairs: Repair[]
-}[];
+export type allCustomerData = (Customer & { cars: CarDetails[]; repairs: Repair[]; })[]
 
 export interface GetCustomerData {
   error: string | ZodIssue[] | null;

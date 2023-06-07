@@ -5,12 +5,14 @@ import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { getServerSession } from "next-auth";
 import { z } from "zod";
-import { GetCustomerData } from "@/types/api/customer";
+import { GetCarData  } from "@/types/api/cars";
 
 const handler = async  (
   req: NextApiRequest,
-  res: NextApiResponse<GetCustomerData>
+  res: NextApiResponse<GetCarData>
 ) => {
+    const query = req.query;
+    const { carId } = query;
   try {
     const user = await getServerSession(req, res, authOptions).then(
       (data) => data?.user
@@ -19,31 +21,32 @@ const handler = async  (
     if (user?.role !== "AUTHORIZED") {
       return res.status(401).json({
         error: "Unauthorized to perform this action.",
-        customerData: null,
+        CarData: null,
       });
     }
 
-    const getAllCustomersData = await db.customer.findMany({
+    const getCarData = await db.carDetails.findUnique({
+        where: { id: carId as string},
         include: {
-          cars: true,
-          repairs: true,
+          owner: true,
+          repair: true,
         },
       })
       
 
     return res.status(200).json({
       error: null,
-      customerData: getAllCustomersData,
+      CarData: getCarData,
     });
 
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return res.status(400).json({ error: error.issues, customerData: null });
+      return res.status(400).json({ error: error.issues, CarData: null });
     }
 
     return res
       .status(500)
-      .json({ error: "Internal Server Error", customerData: null });
+      .json({ error: "Internal Server Error", CarData: null });
   }
 };
 
