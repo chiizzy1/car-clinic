@@ -1,26 +1,3 @@
-// import { withAuth } from "next-auth/middleware";
-// import { NextResponse } from "next/server";
-
-
-
-// export default withAuth(
-//   // `withAuth` augments your `Request` with the user's token.
-//   function middleware(req) {
-//     const pathname = req.nextUrl.pathname; // relative path
-//     return NextResponse.rewrite(new URL("/dashboard", req.url));
-//   },
-//   {
-//     callbacks: {
-//       authorized: ({ token }) => token?.role === "AUTHORIZED",
-//     },
-//   }
-// )
-
-// export const config = { matcher: ["/dashboard/:path*"] }
-
-
-
-
 import { getToken } from "next-auth/jwt";
 import { withAuth } from "next-auth/middleware";
 import { NextResponse } from "next/server";
@@ -58,5 +35,4 @@ export default withAuth(
   }
 );
 
-export const config = { matcher: [ '/dashboard/:path*',], };
-// export const config = { matcher: [ '/dashboard/:path*', '/api/:path*'], };
+export const config = { matcher: [ '/dashboard/:path*', '/api/:path*'], };
