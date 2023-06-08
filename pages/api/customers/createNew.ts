@@ -25,14 +25,24 @@ const handler = async  (
       });
     }
 
-    const existingCustomer = await db.customer.findUnique({
+    const existingCustomerEmail = await db.customer.findUnique({
       where: { email: email }
+    })
+    const existingCustomerPhone = await db.customer.findFirst({
+      where: { phone: phone }
     })
 
     
-    if (existingCustomer) {
+    if (existingCustomerEmail) {
       return res.status(400).json({
         error: "Customer with the same email already exists!",
+        customerData: null,
+      });
+    }
+
+    if (existingCustomerPhone) {
+      return res.status(400).json({
+        error: "Customer with the same phone number already exists!",
         customerData: null,
       });
     }

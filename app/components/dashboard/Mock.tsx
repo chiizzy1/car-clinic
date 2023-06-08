@@ -1,22 +1,20 @@
 "use client";
 
 import { FC } from "react";
-import Axios, { AxiosError } from "axios";
-import { useForm, Controller } from "react-hook-form";
+import { AxiosError } from "axios";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useMutation } from "@tanstack/react-query";
 import styles from "@/style";
 import { toast } from "../ui/toast";
-import axios from "axios";
 import { useRouter } from "next/navigation";
+import { createNewCustomer } from "@/helpers/customers";
+import { Button } from "../ui/Button";
 
 interface MockProps {}
 
-
-
 const Mock: FC<MockProps> = ({}) => {
-
   const { push } = useRouter();
 
   // Handle Form with Yup
@@ -34,38 +32,29 @@ const Mock: FC<MockProps> = ({}) => {
     control,
   } = useForm({ resolver: yupResolver(Schema) });
 
-
- let newCustomerToastId: string
-
-  const { mutate, error, isLoading, isError } = useMutation(
-    async(data)=>{
-      return await axios.post("/api/customers/createNew", data)
-    }, {
-    onSuccess: (response) => { 
+  const { mutate, error, isLoading, isError } = useMutation(createNewCustomer, {
+    onSuccess: (response) => {
       toast({
-        title: 'success creating new customer',
-        message: 'okay.',
-        type: 'success',
-      })
-      push("/dashboard/customers")
-     },
-     onError:(error) => {
+        title: "success creating new customer",
+        message: "okay",
+        type: "success",
+      });
+      push("/dashboard/customers");
+    },
+    onError: (error) => {
       if (error instanceof AxiosError) {
         toast({
-          title: 'Error creating new customer',
+          title: "Error creating new customer",
           message: `${error?.response?.data.error} ⚠️`,
           type: "error",
-        })
+        });
       }
-     }
-  })
+    },
+  });
 
   const handleFormSubmit = (data: any) => {
-    mutate(data)
+    mutate(data);
   };
-
-  
-
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)}>
@@ -132,12 +121,12 @@ const Mock: FC<MockProps> = ({}) => {
       </div>
 
       <div className="flex items-center justify-center w-full">
-        <button
-          type="submit"
-          className={`bg-green-300 text-white px-6 py-2 rounded-sm`}
-        >
-          Submit
-        </button>
+        <Button
+          variant="default"
+          className="items-center"
+          isLoading={isLoading}
+          disabled={isLoading}
+        >{ isLoading ? "Registering New Customer" :"Register New Customer"}</Button>
       </div>
     </form>
   );
