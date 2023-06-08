@@ -25,7 +25,8 @@ import NewCustomer from "./dashboard/NewCustomer";
 import ReactQueryWrapper from "./ui/ReactQueryWrapper";
 import AdminAuthForm from "./adminAuth/AdminAuthForm";
 import Unauthorized from "./dashboard/Unauthorized";
-
+import GetAllCustomers from "./dashboard/GetAllCustomers";
+import Client from "./dashboard/Client";
 
 
 export{
@@ -57,5 +58,6 @@ export{
     ReactQueryWrapper,
     AdminAuthForm,
     Unauthorized,
-    
+    GetAllCustomers,
+    Client
 }

@@ -33,7 +33,9 @@ const Mock: FC<MockProps> = ({}) => {
   } = useForm({ resolver: yupResolver(Schema) });
 
   const { mutate, error, isLoading, isError } = useMutation(createNewCustomer, {
-    onSuccess: (response) => {
+    onSuccess: (successData) => {
+      // console.log(successData);
+      
       toast({
         title: "success creating new customer",
         message: "okay",

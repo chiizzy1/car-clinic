@@ -6,14 +6,13 @@ import { db } from "@/lib/db";
 import { getServerSession } from "next-auth";
 import { z } from "zod";
 import { CreateNewCustomerData } from "@/types/api/customer";
-import { Customer } from "@prisma/client";
 
 const handler = async  (
   req: NextApiRequest,
   res: NextApiResponse<CreateNewCustomerData>
 ) => {
     const query = req.query;
-    const { id } = query;
+    const { customerId } = query;
   try {
     const user = await getServerSession(req, res, authOptions).then(
       (data) => data?.user
@@ -27,7 +26,7 @@ const handler = async  (
     }
 
     const getCustomerData = await db.customer.findUnique({
-        where: { id: id as string},
+        where: { id: customerId as string},
         include: {
           cars: true,
           repairs: true,

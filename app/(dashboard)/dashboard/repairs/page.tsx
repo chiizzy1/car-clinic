@@ -11,7 +11,7 @@ const page: FC<pageProps> = ({}) => {
         <Header name="izzy"/>
         <div className="scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-gray-100">
          <h3 className="font-medium text-xl">Latest repairs</h3>
-          <CustomersTable />
+          {/* <CustomersTable /> */}
         </div>
       </div>
     </div>
