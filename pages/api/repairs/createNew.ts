@@ -12,15 +12,7 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<CreateNewRepairData>
 ) => {
-  const {
-    description,
-    estimatedCost,
-    paid,
-    fixed,
-    carId,
-    customerId,
-    finishDate,
-  }: Repair = req.body;
+  const repairInfo: Repair = req.body;
 
   try {
     const user = await getServerSession(req, res, authOptions).then(
@@ -36,13 +28,8 @@ const handler = async (
 
     const repairData = await db.repair.create({
       data: {
-        description: description,
-        estimatedCost: estimatedCost,
-        paid: paid,
-        fixed: fixed,
-        carId: carId,
-        customerId: customerId,
-        finishDate: finishDate,
+        ...repairInfo,
+        
       },
     });
 

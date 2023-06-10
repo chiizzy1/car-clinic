@@ -20,7 +20,33 @@ const Test: FC<TestProps> = ({ data, customerId}) => {
 
     console.log("cars:", cars);
     console.log("carsRepairs:", repairs);
+
+
+  // add SN to Cars array
     
+    let customerCars: [] = [];
+
+  if (cars) {
+    customerCars = cars.map((info: any, i: number) => {
+      return {
+        ...info,
+        sn: i + 1,
+      };
+    });
+  }
+
+
+  // add SN to repairs array
+  let repairsData: [] = [];
+
+  if (repairs) {
+    repairsData = repairs.map((info: any, i: number) => {
+      return {
+        ...info,
+        sn: i + 1,
+      };
+    });
+  }
 
     
   return (
@@ -40,8 +66,8 @@ const Test: FC<TestProps> = ({ data, customerId}) => {
           {data && data.firstName} Transaction History
         </h3>
       <CustomerTransactionHistory customerId="ertywuikx" /></div>
-      <CarsTable />
-      <RepairsTable />
+      {customerCars && <CarsTable cars={customerCars} customerId={customerId} />}
+      {repairsData && <RepairsTable repairs={repairsData} customerId={customerId} />}
     </div>
   );
 };
