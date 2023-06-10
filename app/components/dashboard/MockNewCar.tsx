@@ -1,7 +1,7 @@
 "use client";
 
 import { FC } from "react";
-import { AxiosError } from "axios";
+import axios, { AxiosError } from "axios";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -9,20 +9,23 @@ import { useMutation } from "@tanstack/react-query";
 import styles from "@/style";
 import { toast } from "../ui/toast";
 import { useRouter } from "next/navigation";
-import { createNewCustomer } from "@/helpers/customers";
+import { createCar } from "@/helpers/customers";
 import { Button } from "../ui/Button";
 
-interface MockProps {}
+interface MockProps {
+    customerId: string
+}
 
-const Mock: FC<MockProps> = ({}) => {
+const MockNewCar: FC<MockProps> = ({customerId}) => {
+    console.log(customerId)
   const { push } = useRouter();
 
   // Handle Form with Yup
   const Schema = yup.object().shape({
-    firstName: yup.string().required("User Name cannot be empty!"),
-    lastName: yup.string().required("User Name cannot be empty!"),
-    email: yup.string().email().required("Please enter a valid email address"),
-    phone: yup.number().required("Please enter a valid phone number"),
+    carMake: yup.string().required("please enter car make"),
+    carModel: yup.string().required("What model is your?"),
+    carYear: yup.number().required("What year was your car manufactured?"),
+    plateNumber: yup.string().required("enter plate number"),
   });
 
   const {
@@ -32,16 +35,22 @@ const Mock: FC<MockProps> = ({}) => {
     control,
   } = useForm({ resolver: yupResolver(Schema) });
 
-  const { mutate, error, isLoading, isError } = useMutation(createNewCustomer, {
+  const createNewCar = async (info: any) => {
+    console.log(info)
+    const {data} = await axios.post(`/api/cars/createNew`, {...info, ownerId: customerId})
+    return data
+  }
+
+  const { mutate, error, isLoading, isError } = useMutation(createNewCar, {
     onSuccess: (successData) => {
-      console.log(successData.data.customerData);
+      console.log(successData);
       
       toast({
-        title: "success creating new customer",
+        title: "success creating new car",
         message: "okay",
         type: "success",
       });
-      push("/dashboard/customers");
+      push(`/dashboard/customers/${customerId}`);
     },
     onError: (error) => {
       if (error instanceof AxiosError) {
@@ -51,6 +60,9 @@ const Mock: FC<MockProps> = ({}) => {
           type: "error",
         });
       }
+
+      console.log(error);
+      
     },
   });
 
@@ -60,63 +72,65 @@ const Mock: FC<MockProps> = ({}) => {
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)}>
+      
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full sm:w-1/2 px-3 mb-6 md:mb-0">
-          <p className="pb-2">First Name</p>
+          <p className="pb-2">Vehicle Make</p>
           <input
             className={`${styles.formInputStyles}`}
             type="text"
-            placeholder="First Name..."
-            {...register("firstName")}
+            placeholder="e.g Mercedes Benz..."
+            {...register("carMake")}
           />
-          {errors.firstName && (
-            <p className={`text-red-400 text-xs italic`}>
-              First name is required.
+          {errors.carMake && (
+            <p className={`${styles.formErrorStyles}`}>
+              Please enter your car manufacturer name!
             </p>
           )}
         </div>
         <div className="w-full sm:w-1/2 px-3 mb-6 sm:mb-0">
-          <p className="pb-2">Last Name</p>
+          <p className="pb-2">Car Model</p>
           <input
             className={`${styles.formInputStyles}`}
             type="text"
-            placeholder="Last name..."
-            {...register("lastName")}
+            placeholder="e.g GLE 63..."
+            {...register("carModel")}
           />
-          {errors.lastName && (
-            <p className={`${styles.formErrorStyles}`}>
-              Last name is required.
+          {errors.carModel && (
+            <p className={`text-red-500 ${styles.formErrorStyles}`}>
+              Please enter your car model
             </p>
           )}
         </div>
       </div>
 
+
       <div className="flex flex-wrap -mx-3 mb-6">
-        <div className="w-full sm:w-1/2 px-3 mb-6 md:mb-0">
-          <p className="pb-2">Phone</p>
+        <div className="w-full sm:w-1/2 px-3 mb-6 sm:mb-0">
+          <p className="pb-2">plate Number</p>
           <input
             className={`${styles.formInputStyles}`}
-            type="tel"
-            placeholder="Phone..."
-            {...register("phone")}
+            type="text"
+            placeholder="e.g GLE 63..."
+            {...register("plateNumber")}
           />
-          {errors.phone && (
-            <p className={`${styles.formErrorStyles}`}>
-              Please enter a valid phone number.
+          {errors.plateNumber && (
+            <p className={`text-red-500 ${styles.formErrorStyles}`}>
+              Please enter your car model
             </p>
           )}
         </div>
         <div className="w-full sm:w-1/2 px-3 mb-6 sm:mb-0">
-          <p className="pb-2">Email</p>
+          <p className="pb-2">Year</p>
           <input
             className={`${styles.formInputStyles}`}
             type="text"
-            placeholder="Email..."
-            {...register("email")}
+            placeholder="e.g 2022..."
+            {...register("carYear")}
           />
-          {errors.email && (
+          {errors.carYear && (
             <p className={`${styles.formErrorStyles}`}>
-              Please enter a valid email address.
+              please enter the year your car was manufactured!
             </p>
           )}
         </div>
@@ -128,10 +142,10 @@ const Mock: FC<MockProps> = ({}) => {
           className="items-center"
           isLoading={isLoading}
           disabled={isLoading}
-        >{ isLoading ? "Registering New Customer" :"Register New Customer"}</Button>
+        >{ isLoading ? "Registering New Car" :"Register New Car"}</Button>
       </div>
     </form>
   );
 };
 
-export default Mock;
+export default MockNewCar;

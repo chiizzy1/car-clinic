@@ -18,3 +18,10 @@ export async function getCustomer({customerId}: any) {
   return customerData
 }
 
+
+
+export async function createCar (customerId: string){
+  console.log(customerId)
+  const {data} = await axios.post(`/api/cars/createNew/${customerId}`)
+  return data
+}

@@ -47,7 +47,7 @@ const fetchDetails = async (customerId: string) => {
 
 
 
-export default function PostDetail(url: URL) {
+export default function CustomerDetail(url: URL) {
   const { data, isLoading } = useQuery({
     queryKey: ["customer"],
     queryFn: () => fetchDetails(url.params.customerId),
@@ -57,7 +57,7 @@ export default function PostDetail(url: URL) {
   return (
     <div>
       <p>bruhhh {url.params.customerId}</p>
-      <Test data={data} />
+      <Test data={data} customerId={url.params.customerId} />
     </div>
   )
 }

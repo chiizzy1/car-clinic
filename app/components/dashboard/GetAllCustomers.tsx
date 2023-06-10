@@ -27,10 +27,10 @@ const GetAllCustomers: FC<GetAllCustomersProps> = ({}) => {
     return <div>Error!</div>;
   }
 
-  let customerData: [] = [];
+  let customersData: [] = [];
 
   if (data) {
-    customerData = data.map((info: any, i: number) => {
+    customersData = data.map((info: any, i: number) => {
       return {
         ...info,
         sn: i + 1,
@@ -41,7 +41,7 @@ const GetAllCustomers: FC<GetAllCustomersProps> = ({}) => {
   return (
     <div>
       <p>All Customers</p>
-      {customerData && <CustomersTable data={customerData} />}
+      {customersData && <CustomersTable data={customersData} />}
     </div>
   );
 };

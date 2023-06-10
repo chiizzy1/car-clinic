@@ -28,14 +28,27 @@ CREATE TABLE `Customer` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
+CREATE TABLE `Car` (
+    `id` VARCHAR(191) NOT NULL,
+    `manufacturer` VARCHAR(191) NULL,
+    `model` VARCHAR(191) NULL,
+    `year` VARCHAR(191) NULL,
+    `plate` VARCHAR(191) NULL,
+    `ownerId` VARCHAR(191) NOT NULL,
+
+    INDEX `Car_ownerId_idx`(`ownerId`),
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
 CREATE TABLE `CarDetails` (
     `id` VARCHAR(191) NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
+    `plateNumber` VARCHAR(191) NOT NULL,
     `make` VARCHAR(191) NOT NULL,
     `model` VARCHAR(191) NOT NULL,
     `year` INTEGER NOT NULL,
-    `plateNumber` VARCHAR(191) NOT NULL,
     `ownerId` VARCHAR(191) NOT NULL,
 
     INDEX `CarDetails_ownerId_idx`(`ownerId`),
