@@ -9,7 +9,7 @@ export interface CreateNewRepairData {
 
 export interface GetRepairData {
   error: string | ZodIssue[] | null;
-  RepairData:  (Repair & { car: CarDetails; owner: Customer }) | null;
+  RepairData:  (Repair & { car: CarDetails; owner: Customer;})[] | null;
 }
 
 export interface GetAllRepairsData {

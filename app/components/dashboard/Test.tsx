@@ -56,7 +56,7 @@ const Test: FC<TestProps> = ({ data, customerId}) => {
         <CustomerCard />
         <StatsCard />
         <div className="bg-white shadow-lg border p-4 rounded-lg">
-            <Link href={`dashbaord/customers/${customerId}/cars`}>View all cars</Link>
+            <Link href={`dashboard/customers/${customerId}/cars/newcar`}>Add New Car</Link>
             {/* <Link href={`dashbaord/customers/${customerId}/cars`}>View all cars</Link> */}
         </div>
       </div>
@@ -65,8 +65,12 @@ const Test: FC<TestProps> = ({ data, customerId}) => {
         <h3 className="text-xl font-medium pb-4 sm: text-center">
           {data && data.firstName} Transaction History
         </h3>
-      <CustomerTransactionHistory customerId="ertywuikx" /></div>
+      {/* <CustomerTransactionHistory customerId="ertywuikx" /> */}
+      </div>
+      <h3 className="text-bold text-xl text-black py-6 text-center">All Customer Cars</h3>
+
       {customerCars && <CarsTable cars={customerCars} customerId={customerId} />}
+      <h3 className="text-bold text-xl text-black py-6 text-center">Customer Repair History</h3>
       {repairsData && <RepairsTable repairs={repairsData} customerId={customerId} />}
     </div>
   );

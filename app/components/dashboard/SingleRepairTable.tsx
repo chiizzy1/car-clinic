@@ -1,64 +1,62 @@
-"use client"
-
-import { FC } from "react";
+import { FC } from 'react'
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
-import Link from "next/link";
 
 
 const columns: GridColDef[] = [
-  { field: "sn", headerName: "SN", width: 70 },
-//   {
-//     field: "fullName",
-//     headerName: "Name",
-//     description: "This column has a value getter and is not sortable.",
-//     width: 200,
-//     valueGetter: (params: GridValueGetterParams) =>
-//       `${params.row.firstName || ""} ${params.row.lastName || ""}`,
-//   },
-  {
-    field: "description",
-    headerName: "description",
-    width: 200,
-  },
-  {
-    field: "estimatedCost",
-    headerName: "estimatedCost",
-    width: 200,
-  },
-  {
-    field: "trackId",
-    headerName: "trackId",
-    width: 200,
-  },
-  {
-    field: "paid",
-    headerName: "paid",
-    width: 200,
-  },
-  {
-    field: "fixed",
-    headerName: "fixed",
-    width: 200,
-  },
-  {
-    field: "startDate",
-    headerName: "startDate",
-    width: 200,
-  },
-  {
-    field: "finishDate",
-    headerName: "finishDate",
-    width: 200,
-  },
-];
+    { field: "sn", headerName: "SN", width: 70 },
+  //   {
+  //     field: "fullName",
+  //     headerName: "Name",
+  //     description: "This column has a value getter and is not sortable.",
+  //     width: 200,
+  //     valueGetter: (params: GridValueGetterParams) =>
+  //       `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+  //   },
+    {
+      field: "description",
+      headerName: "description",
+      width: 200,
+    },
+    {
+      field: "estimatedCost",
+      headerName: "estimatedCost",
+      width: 200,
+    },
+    {
+      field: "trackId",
+      headerName: "trackId",
+      width: 200,
+    },
+    {
+      field: "paid",
+      headerName: "paid",
+      width: 200,
+    },
+    {
+      field: "fixed",
+      headerName: "fixed",
+      width: 200,
+    },
+    {
+      field: "startDate",
+      headerName: "startDate",
+      width: 200,
+    },
+    {
+      field: "finishDate",
+      headerName: "finishDate",
+      width: 200,
+    },
+  ];
 
+  
 
-interface RepairsTableProps {
+interface SingleRepairTableProps {
   repairs: any
-  customerId: string
 }
 
-const RepairsTable: FC<RepairsTableProps> = ({repairs, customerId}) => {
+const SingleRepairTable: FC<SingleRepairTableProps> = ({repairs}) => {
+  
     const actionColumn: any = [
         {
           field: "action",
@@ -92,6 +90,7 @@ const RepairsTable: FC<RepairsTableProps> = ({repairs, customerId}) => {
           />
         </div>
       );
+
 }
 
-export default RepairsTable
+export default SingleRepairTable

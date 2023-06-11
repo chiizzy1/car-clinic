@@ -53,7 +53,7 @@ const CarsTable: FC<CarsTableProps> = ({cars, customerId}) => {
           renderCell: (params: any) => (
             <div className="flex gap-4 items-center">
               <Link href={`/dashboard/customers/${customerId}/cars/${params.row.id}`} className="text-sky-400 p-2 rounded-md cursor-pointer">View</Link>
-              <div className="p-2 text-red-500 rounded-md cursor-pointer">
+              <div onClick={() => alert(`delete button for ${params.row.id} clicked`)} className="p-2 text-red-500 rounded-md cursor-pointer">
                 Delete
               </div>
             </div>
@@ -62,7 +62,7 @@ const CarsTable: FC<CarsTableProps> = ({cars, customerId}) => {
       ];
     
       return (
-        <div style={{ height: 520, width: "100%" }}>
+        <div style={{ height: 300, width: "100%" }}>          
           <DataGrid
             rows={cars}
             columns={columns.concat(actionColumn)}

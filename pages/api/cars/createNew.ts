@@ -24,13 +24,13 @@ const handler = async (
       });
     }
 
-    const existingCustomer = await db.customer.findUnique({
-      where: { id: ownerId },
+    const existingCar = await db.carDetails.findFirst({
+      where: { plateNumber: plateNumber },
     });
 
-    if (!existingCustomer) {
+    if (existingCar) {
       return res.status(400).json({
-        error: "Customer does not exists!",
+        error: "Car with same plate number already exists!",
         CarData: null,
       });
     }
@@ -41,7 +41,7 @@ const handler = async (
         make: carMake,
         model: carModel,
         year: carYear,
-        ownerId: existingCustomer.id,
+        ownerId: ownerId,
       },
     });
 

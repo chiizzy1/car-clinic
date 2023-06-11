@@ -55,6 +55,7 @@ const CreateRepairModal: FC<CreateRepairModalProps> = ({
   const { mutate, error, isLoading, isError } = useMutation(createNewCar, {
     onSuccess: (successData) => {
       console.log(successData);
+      setToggleModal(false)
 
       toast({
         title: "success creating new repair",

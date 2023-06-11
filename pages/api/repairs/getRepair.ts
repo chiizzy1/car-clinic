@@ -7,12 +7,12 @@ import { getServerSession } from "next-auth";
 import { z } from "zod";
 import { GetRepairData } from "@/types/api/repairs";
 
-const handler = async  (
+const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<GetRepairData>
 ) => {
-    const query = req.query;
-    const { id } = query;
+  console.log(req.body)
+  const { customerId, carId } = req.body;
   try {
     const user = await getServerSession(req, res, authOptions).then(
       (data) => data?.user
@@ -25,20 +25,21 @@ const handler = async  (
       });
     }
 
-    const getRepairData = await db.repair.findUnique({
-        where: { id: id as string},
-        include: {
-          car: true,
-          owner: true,
-        },
-      })
-      
+    const getRepairData = await db.repair.findMany({
+      where: {
+        customerId: customerId,
+        carId: carId,
+      },
+      include: {
+        car: true,
+        owner: true,
+      },
+    });
 
     return res.status(200).json({
       error: null,
       RepairData: getRepairData,
     });
-
   } catch (error) {
     if (error instanceof z.ZodError) {
       return res.status(400).json({ error: error.issues, RepairData: null });
@@ -50,4 +51,4 @@ const handler = async  (
   }
 };
 
-export default withMethods(["GET"], handler);
+export default withMethods(["POST"], handler);
