@@ -20,5 +20,5 @@ export interface DeleteCustomerData {
 
 export interface UpdateCustomerData {
   error: string | ZodIssue[] | null;
-  UpdatedCustomerData: Customer | boolean;
+  UpdatedCustomerData: Customer | null;
 }

@@ -17,7 +17,7 @@ interface MockProps {
 }
 
 const MockNewCar: FC<MockProps> = ({customerId}) => {
-    console.log(customerId)
+    // console.log(customerId)
   const { push } = useRouter();
 
   // Handle Form with Yup

@@ -11,8 +11,8 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<DeleteCustomerData>
 ) => {
-  const query = req.query;
-  const { id } = query;
+  const { customerId } = req.body;
+  console.log(customerId);
 
   try {
     const user = await getServerSession(req, res, authOptions).then(
@@ -26,19 +26,20 @@ const handler = async (
       });
     }
 
-    const getCustomer = await db.customer.findFirst({
-      where: { id: id as string },
+    const getCustomer = await db.customer.findUnique({
+      where: { id: customerId as string },
     });
 
     if (!getCustomer) {
       return res.status(400).json({
-        error: "Customer does not exist!",
+        error: "Car does not exist!",
         success: false,
       });
     }
-
-    const deleteCustomerData = await db.customer.delete({
-      where: { id: id as string },
+    console.log(getCustomer);
+    
+    await db.customer.delete({
+      where: { id: customerId as string },
     });
 
     return res.status(200).json({

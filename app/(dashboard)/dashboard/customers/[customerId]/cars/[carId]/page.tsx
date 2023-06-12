@@ -1,6 +1,8 @@
 "use client";
 
 import CreateRepairModal from "@/app/components/dashboard/CreateRepairModal";
+import DeleteCar from "@/app/components/dashboard/DeleteCar";
+import EditCar from "@/app/components/dashboard/EditCar";
 import SingleRepairTable from "@/app/components/dashboard/SingleRepairTable";
 import { toast } from "@/app/components/ui/toast";
 import { useQuery } from "@tanstack/react-query";
@@ -19,6 +21,8 @@ export default function CarDetail(url: URL) {
   const { customerId, carId } = url.params;
 
   const [toggleModal, setToggleModal] = useState<boolean>(false);
+  const [editModal, setEditModal] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false)
 
   async function fetchCarData() {
     let { data } = await axios.get(`/api/cars/getCar/${carId}`);
@@ -60,8 +64,11 @@ export default function CarDetail(url: URL) {
         >
           Add new repair details
         </div>
-        <div className="rounded-lg bg-sky-300 text-black h-10 p-6 flex items-center justify-center">
-          getRepairs
+        <div onClick={() => setEditModal(true)} className="rounded-lg bg-sky-300 text-black h-10 p-6 flex items-center justify-center">
+          Edit Car details
+        </div>
+        <div onClick={() => setDeleteModal(true)} className="rounded-lg bg-sky-300 text-black h-10 p-6 flex items-center justify-center">
+          Delete Car details
         </div>
       </div>
       <h3 className="font-bold text-xl text-black py-6 text-center">
@@ -75,6 +82,10 @@ export default function CarDetail(url: URL) {
           setToggleModal={setToggleModal}
         />
       )}
+
+      { editModal && <EditCar customerId={customerId} carId={carId} setEditModal={setEditModal} /> }
+
+      {deleteModal && <DeleteCar carId={carId} setDeleteModal={setDeleteModal} customerId={customerId}  />}
     </div>
   );
 }

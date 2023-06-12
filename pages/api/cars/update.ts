@@ -12,9 +12,9 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<CreateNewCarData>
 ) => {
-  const data: CarDetails = req.body;
-  const query = req.query;
-  const { carId } = query;
+  const { plateNumber, carMake, carModel, carYear, id } = req.body;
+// console.log(req.body)
+
 
   try {
     const user = await getServerSession(req, res, authOptions).then(
@@ -28,20 +28,17 @@ const handler = async (
       });
     }
 
-    const getCar = await db.carDetails.findFirst({
-      where: { id: carId as string },
-    });
-
-    if (!getCar) {
-      return res.status(400).json({
-        error: "Car details does not exist!",
-        CarData: null,
-      });
-    }
 
     const updateCarData = await db.carDetails.update({
-      where: { id: carId as string },
-      data: data,
+      where: { 
+        id: id as string, 
+      },
+      data: {
+        plateNumber: plateNumber,
+        make: carMake,
+        model: carModel,
+        year: carYear,
+      },
     });
 
     return res.status(200).json({

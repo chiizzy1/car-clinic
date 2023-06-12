@@ -12,7 +12,7 @@ const handler = async (
   res: NextApiResponse<DeleteRepairData>
 ) => {
   
-  console.log(req.body)
+  // console.log(req.body)
   const { repairId } = req.body;
 
   // console.log(repairId);

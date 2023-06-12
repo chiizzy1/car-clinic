@@ -13,26 +13,19 @@ import { createCar } from "@/helpers/customers";
 import { Button } from "../ui/Button";
 import { AiOutlineClose } from "react-icons/ai";
 
-interface CreateRepairModalProps {
+interface EditCarProps {
   customerId: string;
   carId: string;
-  setToggleModal: (toggle: boolean) => void;
+  setEditModal: (toggle: boolean) => void;
 }
 
-const CreateRepairModal: FC<CreateRepairModalProps> = ({
-  customerId,
-  carId,
-  setToggleModal,
-}) => {
-  // console.log(customerId);
-  const { push } = useRouter();
-
+const EditCar: FC<EditCarProps> = ({ customerId, carId, setEditModal }) => {
   // Handle Form with Yup
   const Schema = yup.object().shape({
-    estimatedCost: yup.number().required("please enter car make"),
-    paid: yup.boolean(),
-    fixed: yup.boolean(),
-    description: yup.string().required("enter plate number"),
+    carMake: yup.string().required("please enter car make"),
+    carModel: yup.string().required("What model is your?"),
+    carYear: yup.number().required("What year was your car manufactured?"),
+    plateNumber: yup.string().required("enter plate number"),
   });
 
   const {
@@ -42,32 +35,30 @@ const CreateRepairModal: FC<CreateRepairModalProps> = ({
     control,
   } = useForm({ resolver: yupResolver(Schema) });
 
-  const createNewCar: any = async (info: any) => {
+  const editCarDetails: any = async (info: any) => {
     console.log(info);
-    const { data } = await axios.post(`/api/repairs/createNew`, {
+    const { data } = await axios.put(`/api/cars/update`, {
       ...info,
-      customerId: customerId,
-      carId: carId,
+      id: carId,
     });
-    return data;
+    return data.CarData;
   };
 
-  const { mutate, error, isLoading, isError } = useMutation(createNewCar, {
+  const { mutate, error, isLoading, isError } = useMutation(editCarDetails, {
     onSuccess: (successData) => {
       console.log(successData);
-      setToggleModal(false)
-
+        setEditModal(false)
       toast({
-        title: "success creating new repair",
+        title: "success editing car info",
         message: "okay",
         type: "success",
       });
-      push(`/dashboard/customers/${customerId}/cars/${carId}`);
     },
     onError: (error) => {
       if (error instanceof AxiosError) {
+        setEditModal(false)
         toast({
-          title: "Error creating new repair",
+          title: "Error editing car info",
           message: `${error?.response?.data.error} ⚠️`,
           type: "error",
         });
@@ -87,30 +78,30 @@ const CreateRepairModal: FC<CreateRepairModalProps> = ({
         <div className="absolute bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-12 rounded-lg flex flex-col gap-6">
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full sm:w-1/2 px-3 mb-6 md:mb-0">
-              <p className="pb-2">Estimated Cost</p>
+              <p className="pb-2">Vehicle Make</p>
               <input
                 className={`${styles.formInputStyles}`}
                 type="text"
-                placeholder="e.g $50.23..."
-                {...register("estimatedCost")}
+                placeholder="e.g Mercedes Benz..."
+                {...register("carMake")}
               />
-              {errors.estimatedCost && (
+              {errors.carMake && (
                 <p className={`${styles.formErrorStyles}`}>
-                  Please enter estimated cost!
+                  Please enter your car manufacturer name!
                 </p>
               )}
             </div>
             <div className="w-full sm:w-1/2 px-3 mb-6 sm:mb-0">
-              <p className="pb-2">Payment status (boolean)</p>
+              <p className="pb-2">Car Model</p>
               <input
                 className={`${styles.formInputStyles}`}
                 type="text"
-                placeholder="e.g true..."
-                {...register("paid")}
+                placeholder="e.g GLE 63..."
+                {...register("carModel")}
               />
-              {errors.paid && (
+              {errors.carModel && (
                 <p className={`text-red-500 ${styles.formErrorStyles}`}>
-                  Please enter car payment status
+                  Please enter your car model
                 </p>
               )}
             </div>
@@ -118,30 +109,30 @@ const CreateRepairModal: FC<CreateRepairModalProps> = ({
 
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full sm:w-1/2 px-3 mb-6 sm:mb-0">
-              <p className="pb-2">Repair description</p>
+              <p className="pb-2">plate Number</p>
               <input
                 className={`${styles.formInputStyles}`}
                 type="text"
-                placeholder="e.g servicing..."
-                {...register("description")}
+                placeholder="e.g GLE 63..."
+                {...register("plateNumber")}
               />
-              {errors.description && (
+              {errors.plateNumber && (
                 <p className={`text-red-500 ${styles.formErrorStyles}`}>
-                  Please enter repair description
+                  Please enter your car model
                 </p>
               )}
             </div>
             <div className="w-full sm:w-1/2 px-3 mb-6 sm:mb-0">
-              <p className="pb-2">Fixed status (boolean) </p>
+              <p className="pb-2">Year</p>
               <input
                 className={`${styles.formInputStyles}`}
                 type="text"
-                placeholder="e.g true..."
-                {...register("fixed")}
+                placeholder="e.g 2022..."
+                {...register("carYear")}
               />
-              {errors.fixed && (
+              {errors.carYear && (
                 <p className={`${styles.formErrorStyles}`}>
-                  please enter car fixed status!
+                  please enter the year your car was manufactured!
                 </p>
               )}
             </div>
@@ -149,9 +140,10 @@ const CreateRepairModal: FC<CreateRepairModalProps> = ({
 
           <div
             onClick={() => {
-              setToggleModal(false);
+              setEditModal(false);
             }}
           > <AiOutlineClose /></div>
+
           <div className="flex items-center justify-center w-full">
             <Button
               variant="default"
@@ -168,4 +160,4 @@ const CreateRepairModal: FC<CreateRepairModalProps> = ({
   );
 };
 
-export default CreateRepairModal;
+export default EditCar;

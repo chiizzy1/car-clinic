@@ -11,8 +11,7 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<DeleteCarData>
 ) => {
-  const query = req.query;
-  const { carId } = query;
+  const { carId } = req.body;
 
   try {
     const user = await getServerSession(req, res, authOptions).then(

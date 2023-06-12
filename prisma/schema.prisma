@@ -39,7 +39,7 @@ model Customer {
   phone     Int?
   cars      CarDetails[]
 
-  admin   User     @relation(fields: [adminId], references: [id])
+  admin   User     @relation(fields: [adminId], references: [id], onDelete: Cascade)
   adminId String
   repairs Repair[]
 

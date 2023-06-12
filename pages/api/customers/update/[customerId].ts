@@ -12,10 +12,11 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<UpdateCustomerData>
 ) => {
-  const data: Customer = req.body;
+  const { email, firstName, lastName, phone }: Customer = req.body;
   const query = req.query;
-  const { id } = query;
+  const { customerId } = query;
 
+  // console.log(customerId, req.body)
   try {
     const user = await getServerSession(req, res, authOptions).then(
       (data) => data?.user
@@ -24,24 +25,24 @@ const handler = async (
     if (user?.role !== "AUTHORIZED") {
       return res.status(401).json({
         error: "Unauthorized to perform this action.",
-        UpdatedCustomerData: false,
+        UpdatedCustomerData: null,
       });
     }
 
     const getCustomer = await db.customer.findFirst({
-      where: { id: id as string },
+      where: { id: customerId as string },
     });
 
     if (!getCustomer) {
       return res.status(400).json({
         error: "Customer does not exist!",
-        UpdatedCustomerData: false,
+        UpdatedCustomerData: null,
       });
     }
 
     const updateCustomerData = await db.customer.update({
-      where: { id: id as string },
-      data: data,
+      where: { id: customerId as string },
+      data: { email, firstName, lastName, phone }
     });
 
     return res.status(200).json({
@@ -52,12 +53,12 @@ const handler = async (
     if (error instanceof z.ZodError) {
       return res
         .status(400)
-        .json({ error: error.issues, UpdatedCustomerData: false });
+        .json({ error: error.issues, UpdatedCustomerData: null });
     }
 
     return res
       .status(500)
-      .json({ error: "Internal Server Error", UpdatedCustomerData: false });
+      .json({ error: "Internal Server Error", UpdatedCustomerData: null });
   }
 };
 
