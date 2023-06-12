@@ -11,8 +11,11 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<DeleteRepairData>
 ) => {
-  const query = req.query;
-  const { id } = query;
+  
+  console.log(req.body)
+  const { repairId } = req.body;
+
+  // console.log(repairId);
 
   try {
     const user = await getServerSession(req, res, authOptions).then(
@@ -26,19 +29,10 @@ const handler = async (
       });
     }
 
-    const getRepairData = await db.repair.findFirst({
-      where: { id: id as string },
-    });
-
-    if (!getRepairData) {
-      return res.status(400).json({
-        error: "Repair data does not exist!",
-        success: false,
-      });
-    }
+   
 
     const deleteRepairData = await db.repair.delete({
-      where: { id: id as string },
+      where: { id: repairId as string },
     });
 
     return res.status(200).json({

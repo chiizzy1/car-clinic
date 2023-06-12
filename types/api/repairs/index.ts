@@ -24,5 +24,5 @@ export interface DeleteRepairData {
 
 export interface UpdateRepairData {
   error: string | ZodIssue[] | null;
-  UpdatedRepairData: Repair | boolean;
+  UpdatedRepairData: Repair | null;
 }

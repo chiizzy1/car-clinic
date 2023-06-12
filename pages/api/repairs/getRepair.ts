@@ -11,7 +11,7 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<GetRepairData>
 ) => {
-  console.log(req.body)
+
   const { customerId, carId } = req.body;
   try {
     const user = await getServerSession(req, res, authOptions).then(

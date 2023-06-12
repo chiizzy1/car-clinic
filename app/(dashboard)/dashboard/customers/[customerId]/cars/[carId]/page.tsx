@@ -3,7 +3,7 @@
 import CreateRepairModal from "@/app/components/dashboard/CreateRepairModal";
 import SingleRepairTable from "@/app/components/dashboard/SingleRepairTable";
 import { toast } from "@/app/components/ui/toast";
-import { useMutation } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 
@@ -19,46 +19,33 @@ export default function CarDetail(url: URL) {
   const { customerId, carId } = url.params;
 
   const [toggleModal, setToggleModal] = useState<boolean>(false);
-  const [repairData, setRepairData] = useState([]);
 
-  const createNewCar: any = async (info: any) => {
-    console.log(info);
-    const { data } = await axios.post(`/api/repairs/getRepair`, info);
-    return data.RepairData;
-  };
+  async function fetchCarData() {
+    let { data } = await axios.get(`/api/cars/getCar/${carId}`);
+    // console.log(data);
+    return data;
+  }
 
-  const { mutate, error, isLoading, isError } = useMutation(createNewCar, {
-    onSuccess: (successData: []) => {
-      console.log(successData);
-      setRepairData(successData);
-    },
-    onError: (error) => {
-      console.log(error);
-    },
-  });
+  const { data, error, isError, isLoading } = useQuery(
+    ["carInfo"],
+    fetchCarData,
+    {
+      onSuccess: (successData) => {
+        console.log(successData);
+      },
+    }
+  );
 
-  useEffect(() => {
-    // Function to call on page load
-    const getCarRepairs = (data: any) => {
-      mutate(data);
-      console.log(data);
-    };
+  if (isError) {
+    return <div>Error!</div>;
+  }
 
-    getCarRepairs({ customerId, carId });
-    // Call the function on page load
-  }, []);
+  if (isLoading) {
+    return <h1> Loading...</h1>;
+  }
 
-  // add SN to Cars array
-
-  let repairs: any = [];
-
-  if (repairData) {
-    repairs = repairData.map((info: any, i: number) => {
-      return {
-        ...info,
-        sn: i + 1,
-      };
-    });
+  if (data) {
+    console.log(data);
   }
 
   return (
@@ -77,7 +64,10 @@ export default function CarDetail(url: URL) {
           getRepairs
         </div>
       </div>
-      <SingleRepairTable repairs={repairs} />
+      <h3 className="font-bold text-xl text-black py-6 text-center">
+        Car Repair History
+      </h3>
+      <SingleRepairTable carId={carId} customerId={customerId} reload={toggleModal} />
       {toggleModal && (
         <CreateRepairModal
           customerId={customerId}

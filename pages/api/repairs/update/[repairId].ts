@@ -14,7 +14,8 @@ const handler = async (
 ) => {
   const data: Repair = req.body;
   const query = req.query;
-  const { carId } = query;
+  const { repairId } = query
+  // console.log(repairId, req.body);
 
   try {
     const user = await getServerSession(req, res, authOptions).then(
@@ -24,24 +25,36 @@ const handler = async (
     if (user?.role !== "AUTHORIZED") {
       return res.status(401).json({
         error: "Unauthorized to perform this action.",
-        UpdatedRepairData: false,
+        UpdatedRepairData: null,
       });
     }
 
     const getRepair = await db.repair.findFirst({
-      where: { id: carId as string },
+      where: { id: repairId as string },
     });
 
     if (!getRepair) {
       return res.status(400).json({
         error: "Repair details does not exist!",
-        UpdatedRepairData: false,
+        UpdatedRepairData: null,
       });
     }
 
+    let finishDate: Date | null = null;
+
+    if (data.fixed == true) {
+      finishDate = new Date();
+    }
+
     const updateRepairData = await db.repair.update({
-      where: { id: carId as string },
-      data: data,
+      where: { id: repairId as string },
+      data: {
+        description: data.description,
+        estimatedCost: data.estimatedCost,
+        paid: data.paid,
+        fixed: data.fixed,
+        finishDate: finishDate,
+      },
     });
 
     return res.status(200).json({
@@ -52,12 +65,12 @@ const handler = async (
     if (error instanceof z.ZodError) {
       return res
         .status(400)
-        .json({ error: error.issues, UpdatedRepairData: false });
+        .json({ error: error.issues, UpdatedRepairData: null });
     }
 
     return res
       .status(500)
-      .json({ error: "Internal Server Error", UpdatedRepairData: false });
+      .json({ error: "Internal Server Error", UpdatedRepairData: null });
   }
 };
 
