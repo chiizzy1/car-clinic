@@ -12,7 +12,7 @@ import RepairsTable from "./RepairsTable";
 import StatsCard from "./StatsCard";
 
 interface TestProps {
-  data: Customer;
+  data: any;
   customerId: string;
 }
 

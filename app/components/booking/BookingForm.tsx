@@ -11,9 +11,11 @@ import styles from "@/style";
 //   setClientData: Dispatch<SetStateAction<{}>>
 // }
 
-interface BookingFormProps {}
+interface BookingFormProps {
+  onSubmit: (formData: any) => void
+}
 
-const BookingForm: FC<BookingFormProps> = () => {
+const BookingForm: FC<BookingFormProps> = ({onSubmit}) => {
   // Handle Form with Yup
   const Schema = yup.object().shape({
     firstName: yup.string().required("User Name cannot be empty!"),

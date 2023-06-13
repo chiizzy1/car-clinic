@@ -3,7 +3,7 @@ import { Header } from "@/app/components";
 export default function NewRepair() {
   return (
     <div>
-      <Header />
+      <Header name="izzy" id="id" />
       <p>Fetch customer (car owner) info and search for the car</p>
       <p>
         If the car details already exists in our db, fetch it and make a new

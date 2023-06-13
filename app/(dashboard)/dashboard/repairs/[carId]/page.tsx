@@ -5,7 +5,7 @@ const Repair = async ({ params }: any) => {
 
   return (
     <div>
-      <Header />
+      <Header id="id" name="izzy" />
       <h3>Edit {carId}</h3>
 
 <ul>

@@ -27,7 +27,7 @@ console.log(user.user)
   return (
     <main className="bg-gray-100 min-h-screen">
       <div className="container max-w-7xl mx-auto">
-       {user.user.name && <Header name={user.user?.name} />}
+       {user.user.name && <Header name={user.user?.name} id={user.user.id} />}
         <TopCards />
         <div className="p-4 grid md:grid-cols-3 grid-cols-1 gap-4">
           <BarChart />

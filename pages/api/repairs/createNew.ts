@@ -26,10 +26,16 @@ const handler = async (
       });
     }
 
+    let finishDate: Date | null = null;
+
+    if (repairInfo.fixed == true) {
+      finishDate = new Date();
+    }
+
     const repairData = await db.repair.create({
       data: {
         ...repairInfo,
-        
+        finishDate: finishDate,
       },
     });
 

@@ -5,11 +5,12 @@ import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 
 export default async function CustomerPage() {
-  const user = await getServerSession(authOptions).then(res => res?.user);
-
+  const session = await getServerSession(authOptions);
+  const user = session?.user;
+  
   return (
     <div>
-      {user?.name && <Header name={user?.name} />}
+      {user?.name && <Header name={user?.name} id={user.id} />}
       <div className="pt-8">
         <h3 className="text-lg font-medium">Register new customer!</h3>
         {/* <NewCustomer /> */}
