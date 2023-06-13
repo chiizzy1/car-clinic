@@ -18,7 +18,7 @@ const {push} = useRouter();
     const { mutate } = useMutation(
         async (id: any) => {
             console.log(id)
-          const { data } = await axios.delete(`/api/customers/delete`, { data: id });
+          const { data } = await axios.delete(`/api/customers/delete/${customerId}`);
           return data;
         },
         {

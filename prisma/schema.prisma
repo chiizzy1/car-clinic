@@ -33,10 +33,10 @@ model Customer {
   id        String       @id @default(cuid())
   createdAt DateTime     @default(now())
   updatedAt DateTime?    @updatedAt
-  firstName String?
-  lastName  String?
-  email     String?      @unique
-  phone     Int?
+  firstName String
+  lastName  String
+  email     String       @unique
+  phone     Int          @unique
   cars      CarDetails[]
 
   admin   User     @relation(fields: [adminId], references: [id], onDelete: Cascade)

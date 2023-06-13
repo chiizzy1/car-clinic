@@ -16,3 +16,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 export const db = prisma
+
+
+// log: ['query', 'info', 'warn', 'error'], // Enable logging

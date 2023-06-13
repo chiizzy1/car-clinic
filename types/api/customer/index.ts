@@ -15,7 +15,7 @@ export interface GetCustomerData {
 
 export interface DeleteCustomerData {
   error: string | ZodIssue[] | null;
-  success: boolean;
+  success: string | boolean;
 }
 
 export interface UpdateCustomerData {

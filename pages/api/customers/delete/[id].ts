@@ -11,13 +11,13 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<DeleteCustomerData>
 ) => {
-  const { customerId } = req.body;
-  console.log(customerId);
+  const { id } = req.query;
+
+  console.log(id);
 
   try {
-    const user = await getServerSession(req, res, authOptions).then(
-      (data) => data?.user
-    );
+    const session = await getServerSession(req, res, authOptions);
+    const user = session?.user;
 
     if (user?.role !== "AUTHORIZED") {
       return res.status(401).json({
@@ -26,25 +26,13 @@ const handler = async (
       });
     }
 
-    const getCustomer = await db.customer.findUnique({
-      where: { id: customerId as string },
-    });
-
-    if (!getCustomer) {
-      return res.status(400).json({
-        error: "Car does not exist!",
-        success: false,
-      });
-    }
-    console.log(getCustomer);
-    
     await db.customer.delete({
-      where: { id: customerId as string },
+      where: { id: id as string },
     });
 
     return res.status(200).json({
       error: null,
-      success: true,
+      success: "Successfully deleted customer data",
     });
   } catch (error) {
     if (error instanceof z.ZodError) {
