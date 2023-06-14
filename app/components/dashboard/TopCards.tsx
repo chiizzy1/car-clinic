@@ -1,20 +1,23 @@
 import { FC } from "react";
-import {
-  TiArrowSortedUp,
-  TiArrowSortedDown,
-} from "react-icons/ti";
+import { TiArrowSortedUp, TiArrowSortedDown } from "react-icons/ti";
 import { RxPerson } from "react-icons/rx";
 
-interface TopCardsProps {}
+interface TopCardsProps {
+  customers: [];
+  cars: [];
+  repairs: [];
+}
 
-const TopCards: FC<TopCardsProps> = ({}) => {
+const TopCards: FC<TopCardsProps> = ({ customers, cars, repairs }) => {
+  let init = 0;
+  const totalRevenue = repairs.map((obj: any) => (init += obj.estimatedCost));
   return (
     <div className="grid lg:grid-cols-4 gap-4 p-4">
       <div className="lg:col-span-1 col-span-1 bg-white shadow-lg flex justify-between w-full border p-4 rounded-lg">
         <div className="flex flex-col justify-between">
-          <p className="">Users</p>
-          <p className="text-gray-600 py-2">2000</p>
-          <span className="text-xs text-gray-600">See all users</span>
+          <p className="">Customers</p>
+          <p className="text-gray-600 py-2">{customers.length}</p>
+          <span className="text-xs text-gray-600">See all Customers</span>
         </div>
 
         <div className="flex flex-col justify-between">
@@ -29,9 +32,9 @@ const TopCards: FC<TopCardsProps> = ({}) => {
       </div>
       <div className="lg:col-span-1 col-span-1 bg-white shadow-lg flex justify-between w-full border p-4 rounded-lg">
         <div className="flex flex-col justify-between">
-          <p className="">Users</p>
-          <p className="text-gray-600 py-2">2000</p>
-          <span className="text-xs text-gray-600">See all users</span>
+          <p className="">Cars</p>
+          <p className="text-gray-600 py-2">{cars.length}</p>
+          <span className="text-xs text-gray-600">See all Cars</span>
         </div>
 
         <div className="flex flex-col justify-between">
@@ -46,9 +49,9 @@ const TopCards: FC<TopCardsProps> = ({}) => {
       </div>
       <div className="lg:col-span-1 col-span-1 bg-white shadow-lg flex justify-between w-full border p-4 rounded-lg">
         <div className="flex flex-col justify-between">
-          <p className="">Users</p>
-          <p className="text-gray-600 py-2">2000</p>
-          <span className="text-xs text-gray-600">See all users</span>
+          <p className="">Repairs</p>
+          <p className="text-gray-600 py-2">{repairs.length}</p>
+          <span className="text-xs text-gray-600">See all repairs</span>
         </div>
 
         <div className="flex flex-col justify-between">
@@ -63,8 +66,8 @@ const TopCards: FC<TopCardsProps> = ({}) => {
       </div>
       <div className="lg:col-span-1 col-span-1 bg-white shadow-lg flex justify-between w-full border p-4 rounded-lg">
         <div className="flex flex-col justify-between">
-          <p className="">Users</p>
-          <p className="text-gray-600 py-2">2000</p>
+          <p className="">Total Revenue</p>
+          <p className="text-gray-600 py-2">{init}</p>
           <span className="text-xs text-gray-600">See all users</span>
         </div>
 

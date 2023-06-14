@@ -1,5 +1,5 @@
-import { CustomersTable, Header } from "@/app/components";
-import { data } from "@/constants";
+import { Header } from "@/app/components";
+import FetchAllRepairs from "@/app/components/dashboard/FetchAllRepairs";
 import { FC } from "react";
 
 interface pageProps {}
@@ -10,8 +10,9 @@ const page: FC<pageProps> = ({}) => {
       <div className="container max-w-7xl mx-auto">
         <Header name="izzy" id="id" />
         <div className="scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-gray-100">
-         <h3 className="font-medium text-xl">Latest repairs</h3>
-          {/* <CustomersTable /> */}
+          <h3 className="font-medium text-xl">Latest repairs</h3>
+
+          <FetchAllRepairs />
         </div>
       </div>
     </div>

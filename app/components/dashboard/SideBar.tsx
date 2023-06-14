@@ -5,6 +5,7 @@ import { GiAutoRepair } from "react-icons/gi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { FiSettings, FiLogOut } from "react-icons/fi";
 import SignOutButton from "../ui/SignOutButton";
+import { AiOutlineCar } from "react-icons/ai";
 
 interface SideBarProps {
   children: React.ReactNode;
@@ -29,6 +30,11 @@ const SideBar: FC<SideBarProps> = ({ children }) => {
           <Link href="/dashboard/customers">
             <div className="bg-gray-100 hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
               <RxPerson size={20} />
+            </div>
+          </Link>
+          <Link href="/dashboard/cars">
+            <div className="bg-gray-100 hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
+              <AiOutlineCar size={20} />
             </div>
           </Link>
           <Link href="/dashboard/repairs">
