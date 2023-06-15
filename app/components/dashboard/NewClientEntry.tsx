@@ -34,6 +34,7 @@ const NewClientEntry: FC<NewClientEntryProps> = ({ setToggle, adminId }) => {
     paid: yup.boolean(),
     fixed: yup.boolean(),
     description: yup.string().required("enter plate number"),
+    repairStatus: yup.string().required("enter repair status"),
   });
 
   const {
@@ -56,6 +57,7 @@ const NewClientEntry: FC<NewClientEntryProps> = ({ setToggle, adminId }) => {
       paid,
       fixed,
       description,
+      repairStatus,
     } = info;
 
     // console.log({firstName, lastName, email, phone, carMake, carModel, carYear, plateNumber, estimatedCost, paid, fixed, description})
@@ -91,6 +93,7 @@ const NewClientEntry: FC<NewClientEntryProps> = ({ setToggle, adminId }) => {
           fixed,
           carId,
           customerId,
+          repairStatus,
         });
         repairId = repairData.data.RepairData.id;
         console.log("Repair Id:", repairId);
@@ -200,7 +203,7 @@ const NewClientEntry: FC<NewClientEntryProps> = ({ setToggle, adminId }) => {
           </div>
 
           <div className="flex flex-wrap -mx-3 mb-6">
-            <div className="w-full sm:w-1/2 px-3 mb-6 md:mb-0">
+            <div className="w-full sm:w-1/3 px-3 mb-6 md:mb-0">
               <p className="pb-2">Vehicle Make</p>
               <input
                 className={`${styles.formInputStyles}`}
@@ -214,7 +217,7 @@ const NewClientEntry: FC<NewClientEntryProps> = ({ setToggle, adminId }) => {
                 </p>
               )}
             </div>
-            <div className="w-full sm:w-1/2 px-3 mb-6 sm:mb-0">
+            <div className="w-full sm:w-1/3 px-3 mb-6 sm:mb-0">
               <p className="pb-2">Car Model</p>
               <input
                 className={`${styles.formInputStyles}`}
@@ -228,10 +231,7 @@ const NewClientEntry: FC<NewClientEntryProps> = ({ setToggle, adminId }) => {
                 </p>
               )}
             </div>
-          </div>
-
-          <div className="flex flex-wrap -mx-3 mb-6">
-            <div className="w-full sm:w-1/2 px-3 mb-6 sm:mb-0">
+            <div className="w-full sm:w-1/3 px-3 mb-6 sm:mb-0">
               <p className="pb-2">Year</p>
               <input
                 className={`${styles.formInputStyles}`}
@@ -242,6 +242,23 @@ const NewClientEntry: FC<NewClientEntryProps> = ({ setToggle, adminId }) => {
               {errors.carYear && (
                 <p className={`${styles.formErrorStyles}`}>
                   please enter the year your car was manufactured!
+                </p>
+              )}
+            </div>
+          </div>
+
+          <div className="flex flex-wrap -mx-3 mb-6">
+            <div className="w-full sm:w-1/2 px-3 mb-6 sm:mb-0">
+              <p className="pb-2">repair staus</p>
+              <input
+                className={`${styles.formInputStyles}`}
+                type="text"
+                placeholder="e.g in progress..."
+                {...register("repairStatus")}
+              />
+              {errors.repairStatus && (
+                <p className={`${styles.formErrorStyles}`}>
+                  please enter the repair status!
                 </p>
               )}
             </div>

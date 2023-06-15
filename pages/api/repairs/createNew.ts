@@ -1,4 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import { withMethods } from "@/lib/api-middlewares/with-methods";
 import { authOptions } from "@/lib/auth";
@@ -13,7 +12,7 @@ const handler = async (
   res: NextApiResponse<CreateNewRepairData>
 ) => {
   const repairInfo: Repair = req.body;
-
+console.log(req.body)
   try {
     const user = await getServerSession(req, res, authOptions).then(
       (data) => data?.user

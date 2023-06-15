@@ -4,7 +4,6 @@ import { FC } from "react";
 import BarChart from "./BarChart";
 import RecentOrders from "./RecentOrders";
 import TopCards from "./TopCards";
-import TransactionsTable from "./TransactionsTable";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
@@ -32,12 +31,7 @@ const DashboardCards: FC<DashboardCardsProps> = ({}) => {
 
   const { data, error, isError, isLoading } = useQuery(
     ["dashboard"],
-    getAllCars,
-    {
-      onSuccess: (successData) => {
-        console.log(successData);
-      },
-    }
+    getAllCars
   );
 
   if (isLoading) {
@@ -60,9 +54,6 @@ const DashboardCards: FC<DashboardCardsProps> = ({}) => {
           <div className="p-4 grid md:grid-cols-3 grid-cols-1 gap-4">
             <BarChart />
             <RecentOrders repairs={data?.repairsData} />
-          </div>
-          <div className="p-4">
-            <TransactionsTable />
           </div>
         </>
       )}

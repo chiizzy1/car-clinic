@@ -33,6 +33,7 @@ const CreateRepairModal: FC<CreateRepairModalProps> = ({
     paid: yup.boolean(),
     fixed: yup.boolean(),
     description: yup.string().required("enter plate number"),
+    repairStatus: yup.string().required("enter repair status"),
   });
 
   const {
@@ -86,7 +87,7 @@ const CreateRepairModal: FC<CreateRepairModalProps> = ({
       <div className="fixed bg-black/50 w-full h-full z-20 left-0 top-0 ">
         <div className="absolute bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-12 rounded-lg flex flex-col gap-6">
           <div className="flex flex-wrap -mx-3 mb-6">
-            <div className="w-full sm:w-1/2 px-3 mb-6 md:mb-0">
+            <div className="w-full sm:w-1/3 px-3 mb-6 md:mb-0">
               <p className="pb-2">Estimated Cost</p>
               <input
                 className={`${styles.formInputStyles}`}
@@ -100,7 +101,21 @@ const CreateRepairModal: FC<CreateRepairModalProps> = ({
                 </p>
               )}
             </div>
-            <div className="w-full sm:w-1/2 px-3 mb-6 sm:mb-0">
+            <div className="w-full sm:w-1/3 px-3 mb-6 md:mb-0">
+              <p className="pb-2">Repair status</p>
+              <input
+                className={`${styles.formInputStyles}`}
+                type="text"
+                placeholder="repair..."
+                {...register("repairStatus")}
+              />
+              {errors.repairStatus && (
+                <p className={`${styles.formErrorStyles}`}>
+                  Please enter estimated cost!
+                </p>
+              )}
+            </div>
+            <div className="w-full sm:w-1/3 px-3 mb-6 sm:mb-0">
               <p className="pb-2">Payment status (boolean)</p>
               <input
                 className={`${styles.formInputStyles}`}

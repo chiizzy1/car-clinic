@@ -13,8 +13,7 @@ const handler = async (
   res: NextApiResponse<UpdateRepairData>
 ) => {
   const data: Repair = req.body;
-  const query = req.query;
-  const { repairId } = query
+  const { repairId } = req.query
   // console.log(repairId, req.body);
 
   try {
@@ -49,10 +48,7 @@ const handler = async (
     const updateRepairData = await db.repair.update({
       where: { id: repairId as string },
       data: {
-        description: data.description,
-        estimatedCost: data.estimatedCost,
-        paid: data.paid,
-        fixed: data.fixed,
+        ...data,
         finishDate: finishDate,
       },
     });
