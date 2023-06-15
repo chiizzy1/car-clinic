@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { TiArrowSortedUp, TiArrowSortedDown } from "react-icons/ti";
 import { RxPerson } from "react-icons/rx";
+import { AiOutlineCar, AiOutlineWallet } from "react-icons/ai";
+import { GiAutoRepair } from "react-icons/gi";
 
 interface TopCardsProps {
   customers: [];
@@ -17,7 +19,9 @@ const TopCards: FC<TopCardsProps> = ({ customers, cars, repairs }) => {
         <div className="flex flex-col justify-between">
           <p className="">Customers</p>
           <p className="text-gray-600 py-2">{customers.length}</p>
-          <span className="text-xs text-gray-600">See all Customers</span>
+          <span className="text-xs text-gray-600 underline">
+            See all Customers
+          </span>
         </div>
 
         <div className="flex flex-col justify-between">
@@ -26,7 +30,7 @@ const TopCards: FC<TopCardsProps> = ({ customers, cars, repairs }) => {
             <span>-5%</span>
           </div>
           <div className="p-2 bg-red-300 flex items-center justify-center rounded-sm">
-            <RxPerson />
+            <RxPerson size={20} />
           </div>
         </div>
       </div>
@@ -34,7 +38,7 @@ const TopCards: FC<TopCardsProps> = ({ customers, cars, repairs }) => {
         <div className="flex flex-col justify-between">
           <p className="">Cars</p>
           <p className="text-gray-600 py-2">{cars.length}</p>
-          <span className="text-xs text-gray-600">See all Cars</span>
+          <span className="text-xs text-gray-600 underline">See all Cars</span>
         </div>
 
         <div className="flex flex-col justify-between">
@@ -43,7 +47,7 @@ const TopCards: FC<TopCardsProps> = ({ customers, cars, repairs }) => {
             <span>-5%</span>
           </div>
           <div className="p-2 bg-red-300 flex items-center justify-center rounded-sm">
-            <RxPerson />
+            <AiOutlineCar size={20} />{" "}
           </div>
         </div>
       </div>
@@ -51,7 +55,9 @@ const TopCards: FC<TopCardsProps> = ({ customers, cars, repairs }) => {
         <div className="flex flex-col justify-between">
           <p className="">Repairs</p>
           <p className="text-gray-600 py-2">{repairs.length}</p>
-          <span className="text-xs text-gray-600">See all repairs</span>
+          <span className="text-xs text-gray-600 underline">
+            See all repairs
+          </span>
         </div>
 
         <div className="flex flex-col justify-between">
@@ -60,7 +66,7 @@ const TopCards: FC<TopCardsProps> = ({ customers, cars, repairs }) => {
             <span>+25%</span>
           </div>
           <div className="p-2 bg-red-300 flex items-center justify-center rounded-sm">
-            <RxPerson />
+            <GiAutoRepair size={20} />
           </div>
         </div>
       </div>
@@ -68,7 +74,7 @@ const TopCards: FC<TopCardsProps> = ({ customers, cars, repairs }) => {
         <div className="flex flex-col justify-between">
           <p className="">Total Revenue</p>
           <p className="text-gray-600 py-2">{init}</p>
-          <span className="text-xs text-gray-600">See all users</span>
+          <span className="text-xs text-gray-600 underline">See smoke</span>
         </div>
 
         <div className="flex flex-col justify-between">
@@ -77,7 +83,7 @@ const TopCards: FC<TopCardsProps> = ({ customers, cars, repairs }) => {
             <span>-5%</span>
           </div>
           <div className="p-2 bg-red-300 flex items-center justify-center rounded-sm">
-            <RxPerson />
+            <AiOutlineWallet size={20} />
           </div>
         </div>
       </div>

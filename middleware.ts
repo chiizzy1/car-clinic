@@ -35,4 +35,4 @@ export default withAuth(
   }
 );
 
-export const config = { matcher: [ '/dashboard/:path*', '/api/:path*'], };
+export const config = { matcher: [ '/dashboard/:path*', '/api/customers:path*', '/api/cars:path*', '/api/repairs:path*'], };
