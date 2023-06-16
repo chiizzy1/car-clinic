@@ -73,7 +73,7 @@ const TopCards: FC<TopCardsProps> = ({ customers, cars, repairs }) => {
       <div className="lg:col-span-1 col-span-1 bg-white shadow-lg flex justify-between w-full border p-4 rounded-lg">
         <div className="flex flex-col justify-between">
           <p className="">Total Revenue</p>
-          <p className="text-gray-600 py-2">{init}</p>
+          <p className="text-gray-600 py-2">{init.toLocaleString("en")}</p>
           <span className="text-xs text-gray-600 underline">See smoke</span>
         </div>
 

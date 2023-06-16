@@ -53,6 +53,10 @@ const handler = async (
         },
       });
     }
+
+    return res
+      .status(400)
+      .json({ error: "Invalid Tracking ID!!", trackData: null });
   } catch (error) {
     if (error instanceof z.ZodError) {
       return res.status(400).json({ error: error.issues, trackData: null });
