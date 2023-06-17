@@ -9,18 +9,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number
-) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [createData("Frozen yoghurt", 159, 6.0, 24, 4.0)];
-
 interface TransactionsTableProps {
   trackData: any;
 }
